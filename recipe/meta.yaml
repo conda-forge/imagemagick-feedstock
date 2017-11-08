@@ -9,7 +9,7 @@ source:
   sha256: ede1dcb78d1e4a6ea1e01817b1b385e8862e615768bf7dcf50570849be0b8333
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
@@ -23,7 +23,7 @@ requirements:
     - graphviz
     - jbig
     - jpeg 9*
-    - libpng >=1.6.28,<1.7
+    - libpng >=1.6.22,<1.6.31
     - libtiff >=4.0.3,<4.0.8
     - libwebp 0.5.*
     - libxml2 2.9.*
@@ -35,7 +35,7 @@ requirements:
     - xorg-libxrender
     - xorg-libxt
     - xz 5.2.*
-    - zlib 1.2.8
+    - zlib 1.2.11
   run:
     - bzip2 1.0.*
     - fftw
@@ -46,7 +46,7 @@ requirements:
     - graphviz
     - jbig
     - jpeg 9*
-    - libpng >=1.6.28,<1.7
+    - libpng >=1.6.22,<1.6.31
     - libtiff >=4.0.3,<4.0.8
     - libwebp 0.5.*
     - libxml2 2.9.*
@@ -58,7 +58,7 @@ requirements:
     - xorg-libxrender
     - xorg-libxt
     - xz 5.2.*
-    - zlib 1.2.8
+    - zlib 1.2.11
 
 test:
   commands:
