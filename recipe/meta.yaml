@@ -1,15 +1,15 @@
-{% set version = "7.0.6" %}
+{% set version = "7.0.7" %}
 
 package:
   name: imagemagick
   version: {{ version }}
 
 source:
-  url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}-6.tar.gz
-  sha256: ede1dcb78d1e4a6ea1e01817b1b385e8862e615768bf7dcf50570849be0b8333
+  url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}-11.tar.gz
+  sha256: af19f240f8fa2c3ba9e35238984332ce246d9ba8cf4535e8564624f57246e64d
 
 build:
-  number: 1
+  number: 0
   skip: True  # [win]
 
 requirements:
@@ -17,14 +17,14 @@ requirements:
     - bzip2 1.0.*
     - fftw
     - fontconfig 2.12.*
-    - freetype 2.7
+    - freetype 2.8.1
     - ghostscript
     - giflib 5.1.*
     - graphviz
     - jbig
     - jpeg 9*
-    - libpng >=1.6.22,<1.6.31
-    - libtiff >=4.0.3,<4.0.8
+    - libpng >=1.6.32,<1.6.35
+    - libtiff >=4.0.8,<4.0.10
     - libwebp 0.5.*
     - libxml2 2.9.*
     - openjpeg 2.3.*
@@ -46,8 +46,8 @@ requirements:
     - graphviz
     - jbig
     - jpeg 9*
-    - libpng >=1.6.22,<1.6.31
-    - libtiff >=4.0.3,<4.0.8
+    - libpng >=1.6.32,<1.6.35
+    - libtiff >=4.0.8,<4.0.10
     - libwebp 0.5.*
     - libxml2 2.9.*
     - openjpeg 2.3.*
