@@ -9,7 +9,7 @@ source:
   sha256: af19f240f8fa2c3ba9e35238984332ce246d9ba8cf4535e8564624f57246e64d
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
@@ -40,7 +40,7 @@ requirements:
     - bzip2 1.0.*
     - fftw
     - fontconfig 2.12.*
-    - freetype 2.7
+    - freetype 2.8.1
     - ghostscript
     - giflib 5.1.*
     - graphviz
