@@ -37,7 +37,7 @@ fi
             --with-lqr=no \
             --with-ltdl=no \
             --with-lzma=yes \
-            --with-magick-plus-plus=no \
+            --with-magick-plus-plus=yes \
             --with-openexr=no \
             --with-openjp2=yes \
             --with-pango=yes \
