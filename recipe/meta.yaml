@@ -9,7 +9,7 @@ source:
   sha256: af19f240f8fa2c3ba9e35238984332ce246d9ba8cf4535e8564624f57246e64d
 
 build:
-  number: 2
+  number: 3
   skip: True  # [win]
 
 requirements:
@@ -29,7 +29,7 @@ requirements:
     - libxml2 2.9.*
     - openjpeg 2.3.*
     - pango 1.40.*
-    - perl 5.22.2.1
+    - perl
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
@@ -52,7 +52,7 @@ requirements:
     - libxml2 2.9.*
     - openjpeg 2.3.*
     - pango 1.40.*
-    - perl 5.22.2.1
+    - perl
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
