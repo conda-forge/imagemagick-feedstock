@@ -61,6 +61,8 @@ requirements:
     - zlib 1.2.11
 
 test:
+  files:
+    - test_data
   commands:
     - convert -version
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
