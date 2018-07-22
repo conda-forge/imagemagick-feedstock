@@ -1,1 +1,5 @@
-{}
+graphviz:
+- 2.38.0
+pin_run_as_build:
+  graphviz:
+    max_pin: x
