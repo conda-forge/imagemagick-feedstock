@@ -14,6 +14,9 @@ elif [ $(uname) == Linux ] ; then
   export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
 fi
 
+# remove libtool files
+find $PREFIX -name '*.la' -delete
+
 ./configure --prefix=$PREFIX \
             --enable-hdri=yes \
             --with-quantum-depth=16 \
@@ -61,3 +64,6 @@ make -j$CPU_COUNT
 # tests/wandtest.c main 5321 non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3269`
 # make check
 make install -j$CPU_COUNT
+
+# remove libtool files
+find $PREFIX -name '*.la' -delete
