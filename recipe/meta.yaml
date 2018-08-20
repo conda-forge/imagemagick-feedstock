@@ -9,62 +9,61 @@ source:
   sha256: 119f99e7849805741fbf0a7890bae0b0a6530fdab35dd3f39185b2dddba272f8
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
   build:
+    - pkg-config
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
 
   host:
-    - bzip2 1.0.*
+    - bzip2
     - fftw
-    - fontconfig 2.12.*
-    - freetype 2.8.1
+    - fontconfig
+    - freetype
     - ghostscript
-    - giflib 5.1.*
+    - giflib
     - graphviz
     - jbig
-    - jpeg 9*
-    - libpng >=1.6.32,<1.6.35
-    - libtiff >=4.0.8,<4.0.10
-    - libwebp 0.5.*
-    - libxml2 2.9.*
-    - openjpeg 2.3.*
-    - pango 1.40.*
+    - jpeg
+    - libpng
+    - libtiff
+    - libwebp
+    - libxml2
+    - openjpeg
+    - pango
     - perl
-    - pkg-config
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
     - xorg-libxt
-    - xz 5.2.*
-    - zlib 1.2.11
+    - xz
+    - zlib
   run:
-    - bzip2 1.0.*
+    - bzip2
     - fftw
-    - fontconfig 2.12.*
-    - freetype 2.8.1
+    - fontconfig
+    - freetype
     - ghostscript
-    - giflib 5.1.*
+    - giflib
     - graphviz
     - jbig
-    - jpeg 9*
-    - libpng >=1.6.32,<1.6.35
-    - libtiff >=4.0.8,<4.0.10
-    - libwebp 0.5.*
-    - libxml2 2.9.*
-    - openjpeg 2.3.*
-    - pango 1.40.*
+    - jpeg
+    - libpng
+    - libtiff
+    - libwebp
+    - libxml2
+    - openjpeg
+    - pango
     - perl
-    - pkg-config
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
     - xorg-libxt
-    - xz 5.2.*
-    - zlib 1.2.11
+    - xz
+    - zlib
 
 test:
   commands:
