@@ -48,7 +48,7 @@ find $PREFIX -name '*.la' -delete
             --with-png=yes \
             --with-raqm=no \
             --with-raw=no \
-            --with-rsvg=no \
+            --with-rsvg=yes \
             --with-tiff=yes \
             --with-webp=yes \
             --with-wmf=no \

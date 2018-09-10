@@ -9,7 +9,7 @@ source:
   sha256: 95e4da5fa109bc8b59b5e7a54cdfcf1af3230067c95adf608ff21c08eca1de20
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 
 requirements:
@@ -28,6 +28,7 @@ requirements:
     - jbig
     - jpeg
     - libpng
+    - librsvg
     - libtiff
     - libwebp
     - libxml2
@@ -52,6 +53,7 @@ requirements:
     - jbig
     - jpeg
     - libpng
+    - librsvg
     - libtiff
     - libwebp
     - libxml2
