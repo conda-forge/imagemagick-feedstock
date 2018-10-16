@@ -11,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - gxx
 docker_image:
-- conda/c3i-linux-64
+- condaforge/linux-anvil-comp7
 fontconfig:
 - '2.13'
 freetype:
@@ -27,7 +27,7 @@ libpng:
 libtiff:
 - 4.0.9
 libwebp:
-- '0.5'
+- 1.0.0
 libxml2:
 - '2.9'
 openjpeg:
