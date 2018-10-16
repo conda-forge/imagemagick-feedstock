@@ -4,18 +4,10 @@ export CFLAGS="-I$PREFIX/include $CFLAGS"
 export CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
 
 if [[ $(uname) == Darwin ]]; then
-  export CC=clang
-  export CXX=clang++
   export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib -headerpad_max_install_names $LDFLAGS"
-  export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
-  export MACOSX_DEPLOYMENT_TARGET="10.9"
-  export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
 elif [ $(uname) == Linux ] ; then
-  export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
+  export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
 fi
-
-# remove libtool files
-find $PREFIX -name '*.la' -delete
 
 ./configure --prefix=$PREFIX \
             --enable-hdri=yes \
