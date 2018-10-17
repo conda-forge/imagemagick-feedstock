@@ -1,12 +1,16 @@
 #!/bin/bash
 
+unset CFLAGS
+unset CPPFLAGS
+unset LDFLAGS
+
 export CFLAGS="-I$PREFIX/include $CFLAGS"
 export CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
 
 if [[ $(uname) == Darwin ]]; then
   export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib -headerpad_max_install_names $LDFLAGS"
 elif [ $(uname) == Linux ] ; then
-  export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib"
+  export LDFLAGS="-L$PREFIX/lib -Wl,-rpath,$PREFIX/lib $LDFLAGS"
 fi
 
 ./configure --prefix=$PREFIX \
