@@ -25,7 +25,7 @@ libpng:
 libtiff:
 - 4.0.9
 libwebp:
-- '0.5'
+- 1.0.0
 libxml2:
 - '2.9'
 openjpeg:
