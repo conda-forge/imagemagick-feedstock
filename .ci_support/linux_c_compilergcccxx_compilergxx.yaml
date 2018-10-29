@@ -1,15 +1,17 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+build_number_decrement:
+- '0'
 bzip2:
 - '1'
 c_compiler:
-- toolchain_c
+- gcc
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/gcc7,defaults
 channel_targets:
-- conda-forge main
+- conda-forge gcc7
 cxx_compiler:
-- toolchain_cxx
+- gxx
+docker_image:
+- condaforge/linux-anvil-comp7
 fontconfig:
 - '2.13'
 freetype:
@@ -28,10 +30,6 @@ libwebp:
 - 1.0.0
 libxml2:
 - '2.9'
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 openjpeg:
 - '2.3'
 pango:
@@ -71,5 +69,12 @@ pin_run_as_build:
     max_pin: x.x
 xz:
 - '5.2'
+zip_keys:
+- - c_compiler
+  - cxx_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
 zlib:
 - '1.2'
