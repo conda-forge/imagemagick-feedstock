@@ -10,8 +10,6 @@ if [[ $(uname) == Darwin ]]; then
   export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
-elif [ $(uname) == Linux ] ; then
-  export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
 fi
 
 # remove libtool files
@@ -44,7 +42,7 @@ find $PREFIX -name '*.la' -delete
             --with-openexr=no \
             --with-openjp2=yes \
             --with-pango=yes \
-            --with-perl=yes \
+            --with-perl=no \
             --with-png=yes \
             --with-raqm=no \
             --with-raw=no \
