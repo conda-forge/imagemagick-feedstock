@@ -2,12 +2,16 @@ bzip2:
 - '1'
 c_compiler:
 - gcc
+c_compiler_version:
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
 - gxx
+cxx_compiler_version:
+- '7'
 docker_image:
 - condaforge/linux-anvil-comp7
 fontconfig:
@@ -15,13 +19,15 @@ fontconfig:
 freetype:
 - 2.9.1
 giflib:
-- '5.1'
+- 5.1.7
 graphviz:
 - 2.38.0
 jpeg:
 - '9'
 libpng:
 - 1.6.35
+librsvg:
+- 2.44.3
 libtiff:
 - 4.0.9
 libwebp:
@@ -41,13 +47,13 @@ pin_run_as_build:
     max_pin: x
   freetype:
     max_pin: x
-  giflib:
-    max_pin: x.x
   graphviz:
     max_pin: x
   jpeg:
     max_pin: x
   libpng:
+    max_pin: x.x
+  librsvg:
     max_pin: x.x
   libtiff:
     max_pin: x
