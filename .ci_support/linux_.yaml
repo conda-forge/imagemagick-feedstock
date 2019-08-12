@@ -25,7 +25,7 @@ graphviz:
 jpeg:
 - '9'
 libpng:
-- 1.6.35
+- '1.6'
 librsvg:
 - '2'
 libtiff:
