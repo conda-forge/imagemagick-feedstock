@@ -33,7 +33,7 @@ librsvg:
 libtiff:
 - 4.0.10
 libwebp:
-- 1.0.0
+- '1.0'
 libxml2:
 - '2.9'
 openjpeg:
