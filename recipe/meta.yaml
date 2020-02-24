@@ -1,4 +1,4 @@
-{% set version = "7.0.9-25" %}
+{% set version = "7.0.9-26" %}
 
 package:
   name: imagemagick
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: 7114d6f6358ac1c6b52fe433dd4c0d385f017d553777577650777f5166251aad
+  sha256: abc5e187c2d1f7c38f286101958482be8efb44dd004d8286aa437cbb2121afce
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
@@ -81,7 +81,7 @@ about:
   home: http://www.imagemagick.org/
   license: ImageMagick
   license_file: LICENSE
-  summary: 'Software suite to create, edit, compose, or convert bitmap images.'
+  summary: Software suite to create, edit, compose, or convert bitmap images.
 
 extra:
   recipe-maintainers:
