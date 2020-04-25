@@ -33,7 +33,7 @@ librsvg:
 libtiff:
 - 4.1.0
 libwebp:
-- '1.0'
+- '1.1'
 libxml2:
 - '2.9'
 openjpeg:
@@ -61,8 +61,6 @@ pin_run_as_build:
     max_pin: x
   libtiff:
     max_pin: x
-  libwebp:
-    max_pin: x.x
   libxml2:
     max_pin: x.x
   openjpeg:
