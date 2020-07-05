@@ -5,7 +5,7 @@ Home: http://www.imagemagick.org/
 
 Package license: ImageMagick
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Software suite to create, edit, compose, or convert bitmap images.
 
