@@ -52,7 +52,8 @@ find $PREFIX -name '*.la' -delete
             --with-wmf=no \
             --with-x=yes \
             --with-xml=yes \
-            --with-zlib=yes
+            --with-zlib=yes \
+            --with-glib=yes
 
 make -j$CPU_COUNT
 # FIXME:
