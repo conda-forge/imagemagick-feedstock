@@ -43,6 +43,7 @@ requirements:
     - xorg-libxt
     - xz
     - zlib
+    - glib
   run:
     - bzip2
     - fftw
