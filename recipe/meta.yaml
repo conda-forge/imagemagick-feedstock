@@ -1,4 +1,4 @@
-{% set version = "7.0.10-28" %}
+{% set version = "7.0.10-50" %}
 
 package:
   name: imagemagick
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: 9f2b8b131222354b196c640fca4e53eb0bbf62246621b9d467f223366272d7a7
+  sha256: e06c573ba1d967f903aee51d54a3a75e92d17ea93c1eec859dfe01211ad78a5a
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -75,8 +75,6 @@ test:
   commands:
     - convert -version
     - Magick++-config --cflags
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.imagemagick.org/
