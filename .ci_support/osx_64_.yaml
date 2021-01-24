@@ -23,7 +23,7 @@ freetype:
 giflib:
 - '5.2'
 glib:
-- '2.66'
+- '2'
 graphviz:
 - '2.40'
 jpeg:
@@ -33,7 +33,7 @@ libpng:
 librsvg:
 - '2'
 libtiff:
-- 4.1.0
+- '4'
 libwebp:
 - '1.1'
 libxml2:
