@@ -9,7 +9,7 @@ source:
   sha256: 936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -35,7 +35,7 @@ requirements:
     - libxml2
     - openjpeg
     - pango
-    - perl
+    - perl *
     - pkg-config
     - xorg-libx11
     - xorg-libxext
@@ -62,7 +62,7 @@ requirements:
     - libxml2
     - openjpeg
     - pango
-    - perl
+    - perl *
     - pkg-config
     - xorg-libx11
     - xorg-libxext
