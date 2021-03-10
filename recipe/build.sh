@@ -10,17 +10,7 @@ if [[ $(uname) == Darwin ]]; then
   export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
-  echo libtoolize
-  libtoolize
-  echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
-  aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
-  echo autoheader
-  autoheader
-  echo autoconf
-  autoconf
-  echo automake --force-missing --add-missing --include-deps
-  automake --force-missing --add-missing --include-deps
-  export CONFIG_FLAGS="--build=${BUILD}"
+  autoreconf -fi
 fi
 
 # remove libtool files
@@ -64,7 +54,8 @@ find $PREFIX -name '*.la' -delete
             --with-x=yes \
             --with-xml=yes \
             --with-zlib=yes \
-            --with-glib=yes
+            --with-glib=yes \
+            --build=${BUILD}
 
 make -j$CPU_COUNT
 # FIXME:

@@ -18,7 +18,6 @@ requirements:
     - {{ compiler('cxx') }}
     - autoconf  # [osx]
     - automake  # [osx]
-    - libtool   # [osx]
   host:
     - bzip2
     - fftw
