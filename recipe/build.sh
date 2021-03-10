@@ -11,7 +11,6 @@ if [[ $(uname) == Darwin ]]; then
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
   if [[ "$(uname -m)" == "arm64" ]] ; then
-    # for other platforms we just need to reconf to get the correct achitecture
     echo libtoolize
     libtoolize
     echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
