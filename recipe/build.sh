@@ -10,19 +10,17 @@ if [[ $(uname) == Darwin ]]; then
   export LIBRARY_SEARCH_VAR=DYLD_FALLBACK_LIBRARY_PATH
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export CXXFLAGS="-stdlib=libc++ $CXXFLAGS"
-  if [[ "$(uname -m)" == "arm64" ]] ; then
-    echo libtoolize
-    libtoolize
-    echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
-    aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
-    echo autoheader
-    autoheader
-    echo autoconf
-    autoconf
-    echo automake --force-missing --add-missing --include-deps
-    automake --force-missing --add-missing --include-deps
-    export CONFIG_FLAGS="--build=${BUILD}"
-  fi
+  echo libtoolize
+  libtoolize
+  echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
+  aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
+  echo autoheader
+  autoheader
+  echo autoconf
+  autoconf
+  echo automake --force-missing --add-missing --include-deps
+  automake --force-missing --add-missing --include-deps
+  export CONFIG_FLAGS="--build=${BUILD}"
 fi
 
 # remove libtool files
