@@ -9,14 +9,16 @@ source:
   sha256: 936959ba77bb9d8fdab4d9c69f90316c02a7e2467dea3790ad36b4d500c31a22
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-
+    - autoconf  # [unix]
+    - automake  # [unix]
+    - libtool   # [unix]
   host:
     - bzip2
     - fftw
