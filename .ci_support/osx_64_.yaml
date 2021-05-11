@@ -25,7 +25,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '2.40'
+- '2.47'
 jpeg:
 - '9'
 libpng:
@@ -43,7 +43,7 @@ macos_machine:
 openjpeg:
 - '2.4'
 pango:
-- '1.42'
+- '1.48'
 pin_run_as_build:
   bzip2:
     max_pin: x
