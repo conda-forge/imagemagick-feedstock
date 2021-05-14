@@ -1,4 +1,6 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 
 export CFLAGS="-I$PREFIX/include $CFLAGS"
 export CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
