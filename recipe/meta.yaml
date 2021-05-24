@@ -9,11 +9,12 @@ source:
   sha256: fc454be622724c6224fa6c8230bb9c50191a05fbf05b9c9c25aa3e5497090b83
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
 
