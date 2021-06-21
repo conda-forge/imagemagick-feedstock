@@ -1,4 +1,4 @@
-{% set version = "7.1.0-0" %}
+{% set version = "7.1.0-1" %}
 
 package:
   name: imagemagick
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: e4fe7dbebab1d0fb5f400c1f8fd5a3427e5e05eac7fb8dbd91d773a4187ad150
+  sha256: 196986c18601cf4db1afda69c091c96cd63515dac6bc0de66cfa6789f8cf035b
 
 build:
   number: 0
