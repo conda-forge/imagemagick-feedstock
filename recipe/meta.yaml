@@ -17,8 +17,8 @@ requirements:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-
   host:
+    - make
     - bzip2
     - fftw
     - fontconfig
