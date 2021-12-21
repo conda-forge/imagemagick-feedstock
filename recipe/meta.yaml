@@ -14,11 +14,11 @@ build:
 
 requirements:
   build:
-    - gnuconfig  # [unix]
+    - gnuconfig  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - make
+    - make  # [linux]
     - bzip2
     - fftw
     - fontconfig
