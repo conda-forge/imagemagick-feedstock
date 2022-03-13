@@ -31,7 +31,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '2.47'
+- '3'
 jpeg:
 - '9'
 libpng:
