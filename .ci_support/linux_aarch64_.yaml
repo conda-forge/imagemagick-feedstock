@@ -47,7 +47,7 @@ libxml2:
 openjpeg:
 - '2.4'
 pango:
-- '1.48'
+- '1.50'
 pin_run_as_build:
   bzip2:
     max_pin: x
