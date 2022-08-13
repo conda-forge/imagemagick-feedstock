@@ -41,7 +41,7 @@ libxml2:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openjpeg:
-- '2.4'
+- '2.5'
 pango:
 - '1.50'
 pin_run_as_build:
