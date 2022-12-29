@@ -9,7 +9,7 @@ source:
   sha256: 77e1535448d6c7f951a8c9d10804246b76044b879adf5bf1f12c836ed9d4b5ec
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
 
 requirements:
@@ -17,6 +17,7 @@ requirements:
     - gnuconfig  # [not win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - pkg-config
   host:
     - make  # [linux]
     - bzip2
@@ -37,7 +38,6 @@ requirements:
     - openjpeg
     - pango
     - perl *
-    - pkg-config
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
