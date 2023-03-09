@@ -1,11 +1,11 @@
-About imagemagick
-=================
+About imagemagick-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/imagemagick-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.imagemagick.org/
 
 Package license: ImageMagick
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/imagemagick-feedstock/blob/main/LICENSE.txt)
 
 Summary: Software suite to create, edit, compose, or convert bitmap images.
 
