@@ -1,8 +1,8 @@
-migrator_ts: 1679880519
+migrator_ts: 1679944808.5511127
 __migrator:
   kind: version
   migration_number: 1
   bump_number: 1
 
 graphviz:
-  - 7
+- '7'

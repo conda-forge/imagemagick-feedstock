@@ -29,7 +29,7 @@ requirements:
     - giflib
     - graphviz
     - jbig
-    - jpeg
+    - libjpeg-turbo
     - libpng
     - librsvg
     - libtiff
@@ -55,7 +55,6 @@ requirements:
     - giflib
     - graphviz
     - jbig
-    - jpeg
     - libpng
     - librsvg
     - libtiff
