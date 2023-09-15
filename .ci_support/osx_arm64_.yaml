@@ -33,7 +33,7 @@ libpng:
 librsvg:
 - '2'
 libtiff:
-- '4.5'
+- '4.6'
 libwebp:
 - '1'
 libxml2:
