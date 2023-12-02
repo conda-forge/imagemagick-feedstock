@@ -43,7 +43,7 @@ libtiff:
 libwebp:
 - '1'
 libxml2:
-- '2.11'
+- '2.12'
 openjpeg:
 - '2'
 pango:

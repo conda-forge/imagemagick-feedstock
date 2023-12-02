@@ -37,7 +37,7 @@ libtiff:
 libwebp:
 - '1'
 libxml2:
-- '2.11'
+- '2.12'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openjpeg:
