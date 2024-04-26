@@ -19,6 +19,7 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
             --with-freetype=yes \
             --with-gslib=yes \
             --with-gvc=yes \
+            --with-heic=yes \
             --with-jbig=yes \
             --with-jpeg=yes \
             --with-lcms=no \
