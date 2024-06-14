@@ -35,7 +35,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '9'
+- '11'
 libjpeg_turbo:
 - '3'
 libpng:
@@ -65,4 +65,4 @@ zip_keys:
 - - c_stdlib_version
   - cdt_name
 zlib:
-- '1.2'
+- '1'
