@@ -9,7 +9,7 @@ source:
   sha256: 19f4303774b56be182c576b266c34bc824fcaef1d1d243192344d015adb0ec28
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -30,6 +30,7 @@ requirements:
     - giflib
     - graphviz
     - jbig
+    - libheif
     - libjpeg-turbo
     - libpng
     - librsvg
@@ -56,6 +57,7 @@ requirements:
     - giflib
     - graphviz
     - jbig
+    - libheif
     - libpng
     - librsvg
     - libtiff
