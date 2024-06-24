@@ -1,5 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '10.13'
+MACOSX_SDK_VERSION:
+- '10.13'
 bzip2:
 - '1'
 c_compiler:
@@ -9,7 +11,7 @@ c_compiler_version:
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
-- '10.9'
+- '10.13'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -29,7 +31,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '9'
+- '11'
 libjpeg_turbo:
 - '3'
 libpng:
@@ -59,4 +61,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 zlib:
-- '1.2'
+- '1'
