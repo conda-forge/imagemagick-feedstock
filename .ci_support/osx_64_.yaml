@@ -49,7 +49,7 @@ macos_machine:
 openjpeg:
 - '2'
 pango:
-- '1.50'
+- '1'
 pin_run_as_build:
   graphviz:
     max_pin: x
