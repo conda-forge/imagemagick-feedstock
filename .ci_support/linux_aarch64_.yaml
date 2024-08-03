@@ -35,7 +35,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '11'
+- '12'
 libjpeg_turbo:
 - '3'
 libpng:
