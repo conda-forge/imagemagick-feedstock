@@ -7,7 +7,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,7 +19,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
+- '17'
 fftw:
 - '3'
 fontconfig:
@@ -50,9 +50,6 @@ openjpeg:
 - '2'
 pango:
 - '1'
-pin_run_as_build:
-  graphviz:
-    max_pin: x
 target_platform:
 - osx-64
 xz:
