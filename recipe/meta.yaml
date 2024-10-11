@@ -19,13 +19,13 @@ build:
 
 requirements:
   build:
-    - gnuconfig  # [not win]
+    - gnuconfig
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - pkg-config
   host:
-    - make  # [linux]
+    - make
     - bzip2
     - fftw
     - fontconfig
