@@ -2,6 +2,12 @@
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 
+if [ "$license_family" = "agpl" ]; then
+    with_gslib=yes
+else
+    with_gslib=no
+fi
+
 ./configure --prefix=$PREFIX \
             --enable-hdri=yes \
             --with-quantum-depth=16 \
@@ -17,7 +23,7 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
             --with-fpx=no \
             --with-fontconfig=yes \
             --with-freetype=yes \
-            --with-gslib=yes \
+            --with-gslib=$with_gslib \
             --with-gvc=yes \
             --with-heic=yes \
             --with-jbig=yes \

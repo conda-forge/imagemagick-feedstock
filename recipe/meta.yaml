@@ -1,4 +1,8 @@
 {% set version = "7.1.1-39" %}
+{% set build = 1 %}
+{% if license_family == "agpl" %}
+    {% set build = build + 100 %}
+{% endif %}
 
 package:
   name: imagemagick
@@ -9,7 +13,8 @@ source:
   sha256: b2eb652d9221bdeb65772503891d8bfcfc36b3b1a2c9bb35b9d247a08965fd5d
 
 build:
-  number: 0
+  number: {{ build }}
+  string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   skip: true  # [win]
 
 requirements:
@@ -26,7 +31,7 @@ requirements:
     - fontconfig
     - fonts-conda-forge
     - freetype
-    - ghostscript
+    - ghostscript  # [license_family=="agpl"]
     - giflib
     - graphviz
     - jbig
@@ -76,13 +81,17 @@ requirements:
 
 test:
   commands:
-    - convert -version
+    - magick --version
+    - magick --version | grep -q gslib && exit 1 || exit 0
     - Magick++-config --cflags
 
 about:
   home: http://www.imagemagick.org/
-  license: ImageMagick
   license_file: LICENSE
+  license: AGPL           # [license_family=="agpl"]
+  license_family: AGPL    # [license_family=="agpl"]
+  license: ImageMagick    # [license_family=="imagemagick"]
+  license_family: Apache  # [license_family=="imagemagick"]
   summary: Software suite to create, edit, compose, or convert bitmap images.
 
 extra:
