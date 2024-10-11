@@ -44,6 +44,8 @@ libwebp:
 - '1'
 libxml2:
 - '2'
+license_family:
+- imagemagick
 openjpeg:
 - '2'
 pango:

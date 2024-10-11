@@ -3,6 +3,19 @@ About imagemagick-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/imagemagick-feedstock/blob/main/LICENSE.txt)
 
+
+About imagemagick
+-----------------
+
+Home: http://www.imagemagick.org/
+
+Package license: 
+
+Summary: Software suite to create, edit, compose, or convert bitmap images.
+
+About imagemagick
+-----------------
+
 Home: http://www.imagemagick.org/
 
 Package license: ImageMagick
@@ -27,38 +40,73 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64</td>
+              <td>linux_64_license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64</td>
+              <td>linux_64_license_familyimagemagick</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_license_familyimagemagick" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le</td>
+              <td>linux_aarch64_license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_license_familygpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64</td>
+              <td>linux_aarch64_license_familyimagemagick</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_license_familyimagemagick" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64</td>
+              <td>linux_ppc64le_license_familygpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_license_familygpl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_license_familyimagemagick</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_license_familyimagemagick" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_license_familygpl</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familygpl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_license_familyimagemagick</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familyimagemagick" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_license_familygpl</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familygpl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_license_familyimagemagick</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familyimagemagick" alt="variant">
                 </a>
               </td>
             </tr>
