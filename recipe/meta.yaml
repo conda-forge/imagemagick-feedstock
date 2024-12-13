@@ -1,5 +1,5 @@
 {% set version = "7.1.1-41" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
 {% endif %}
@@ -50,7 +50,7 @@ requirements:
     - xorg-libxext
     - xorg-libxrender
     - xorg-libxt
-    - xz
+    - liblzma-devel
     - zlib
     - glib
   run:
@@ -77,7 +77,7 @@ requirements:
     - xorg-libxext
     - xorg-libxrender
     - xorg-libxt
-    - xz
+    - liblzma-devel
     - zlib
 
 test:
