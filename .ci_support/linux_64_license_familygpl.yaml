@@ -32,6 +32,8 @@ glib:
 - '2'
 graphviz:
 - '12'
+libheif:
+- '1.18'
 libjpeg_turbo:
 - '3'
 liblzma_devel:
