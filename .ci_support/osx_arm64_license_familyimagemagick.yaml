@@ -33,7 +33,7 @@ glib:
 graphviz:
 - '12'
 libheif:
-- '1.18'
+- '1.19'
 libjpeg_turbo:
 - '3'
 liblzma_devel:
