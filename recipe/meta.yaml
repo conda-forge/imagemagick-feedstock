@@ -45,7 +45,6 @@ requirements:
     - libxml2
     - openjpeg
     - pango
-    - perl *
     - xorg-libx11
     - xorg-libxext
     - xorg-libxrender
@@ -71,7 +70,6 @@ requirements:
     - libxml2
     - openjpeg
     - pango
-    - perl *
     - pkg-config
     - xorg-libx11
     - xorg-libxext
