@@ -27,7 +27,3 @@
 /output
 # Pixi's configuration
 .pixi
-
-# pixi environments
-.pixi
-*.egg-info
