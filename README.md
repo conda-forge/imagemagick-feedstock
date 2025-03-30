@@ -9,7 +9,7 @@ About imagemagick
 
 Home: http://www.imagemagick.org/
 
-Package license: ImageMagick
+Package license: 
 
 Summary: Software suite to create, edit, compose, or convert bitmap images.
 
@@ -18,7 +18,7 @@ About imagemagick
 
 Home: http://www.imagemagick.org/
 
-Package license: 
+Package license: ImageMagick
 
 Summary: Software suite to create, edit, compose, or convert bitmap images.
 
