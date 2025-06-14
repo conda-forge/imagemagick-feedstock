@@ -31,7 +31,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '12'
+- '13'
 libheif:
 - '1.19'
 libjpeg_turbo:
@@ -47,7 +47,7 @@ libtiff:
 libwebp:
 - '1'
 libxml2:
-- '2'
+- '2.13'
 license_family:
 - gpl
 macos_machine:
