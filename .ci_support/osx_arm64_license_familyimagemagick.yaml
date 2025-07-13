@@ -7,7 +7,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,7 +19,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 fftw:
 - '3'
 fontconfig:
@@ -31,7 +31,7 @@ giflib:
 glib:
 - '2'
 graphviz:
-- '12'
+- '13'
 libheif:
 - '1.19'
 libjpeg_turbo:
@@ -47,7 +47,7 @@ libtiff:
 libwebp:
 - '1'
 libxml2:
-- '2'
+- '2.13'
 license_family:
 - imagemagick
 macos_machine:
