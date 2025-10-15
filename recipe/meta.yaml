@@ -1,5 +1,5 @@
-{% set version = "7.1.2-6" %}
-{% set build = 1 %}
+{% set version = "7.1.2-7" %}
+{% set build = 0 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
 {% endif %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: 922dac96c08b9848c5129f544ad4d893dd3be4e2f17298ee488959b2ed235b8f
+  sha256: d532c7be0b4fbd17d03ef311f55ad8a4845c63cb74f8725320b7d3d3c6a7a4f7
 
 build:
   number: {{ build }}
