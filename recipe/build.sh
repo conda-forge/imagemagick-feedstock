@@ -30,11 +30,13 @@ if [[ "${target_platform}" == "win-"* ]]; then
     echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
     ls -la "${PREFIX}/lib/pkgconfig" || true
 
-    with_x=no
+    with_fftw=no
     with_gdi32=no
+    with_x=no
 else
-    with_x=yes
+    with_fftw=yes
     with_gdi32=yes
+    with_x=yes
 fi
 
 ./configure --prefix=$PREFIX \
@@ -47,7 +49,7 @@ fi
             --with-autotrace=no \
             --with-djvu=no \
             --with-dps=no \
-            --with-fftw=yes \
+            --with-fftw=${with_fftw} \
             --with-flif=no \
             --with-fpx=no \
             --with-fontconfig=yes \
