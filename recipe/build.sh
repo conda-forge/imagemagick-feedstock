@@ -27,7 +27,6 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
-    echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
     ls -la "${PREFIX}/lib/pkgconfig" || true
 
     # MSVC/lld-link build should not link libstdc++.
