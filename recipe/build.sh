@@ -26,9 +26,9 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export LIBS="${LIBS} -ladvapi32 -luser32"
 
     # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
-    export PKG_CONFIG_PATH="${LIBRARY_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
     echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
-    ls -la "${LIBRARY_PREFIX}/lib/pkgconfig" || true
+    ls -la "${PREFIX}/lib/pkgconfig" || true
 
     with_x=no
     with_gdi32=no
