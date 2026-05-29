@@ -22,8 +22,8 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - autotools_clang_conda  # [win]
-    - make                   # [unix] 
     - gnuconfig              # [unix]
+    - make                   # [unix] 
     - pkg-config
   host:
     - bzip2
@@ -56,13 +56,14 @@ requirements:
     - bzip2
     - fftw
     - fontconfig
-    - freetype
     - fonts-conda-forge
+    - freetype
     - ghostscript      # [license_family=="agpl"]
     - giflib
     - graphviz
     - jbig
     - libheif
+    - liblzma-devel
     - libpng
     - librsvg
     - libtiff
@@ -75,7 +76,6 @@ requirements:
     - xorg-libxext     # [unix]
     - xorg-libxrender  # [unix]
     - xorg-libxt       # [unix]
-    - liblzma-devel
     - zlib
 
 test:
