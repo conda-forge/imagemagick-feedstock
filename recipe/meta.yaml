@@ -27,7 +27,6 @@ requirements:
     - pkg-config
   host:
     - bzip2
-    - dirent                 # [win]
     - fftw
     - fontconfig
     - fonts-conda-forge
