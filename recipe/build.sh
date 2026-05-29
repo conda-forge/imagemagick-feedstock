@@ -14,6 +14,10 @@ fi
 
 # X11 support is not available on Windows
 if [[ "${target_platform}" == "win-"* ]]; then
+    # `_WIN32_WINNT` is not defined in autotools_clang_conda environment,
+    # causing `MAGICKCORE_POSIX_SUPPORT` to be set instead of `MAGICKCORE_WINDOWS_SUPPORT`.
+    # This leads to `dirent.h/sys/wait.h` being included, which don't exist on Windows.
+    export CPPFLAGS="${CPPFLAGS} -D_WIN32_WINNT=0x0601"
     with_x=no
 else
     with_x=yes
