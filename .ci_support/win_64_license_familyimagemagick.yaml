@@ -1,0 +1,50 @@
+bzip2:
+- '1'
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2022
+fftw:
+- '3'
+fontconfig:
+- '2'
+freetype:
+- '2'
+giflib:
+- '5.2'
+glib:
+- '2'
+graphviz:
+- '14'
+libheif:
+- '1.19'
+libjpeg_turbo:
+- '3'
+liblzma_devel:
+- '5'
+libpng:
+- '1.6'
+librsvg:
+- '2'
+libtiff:
+- '4.7'
+libwebp:
+- '1'
+libxml2_devel:
+- '2.14'
+license_family:
+- imagemagick
+openjpeg:
+- '2'
+pango:
+- '1'
+target_platform:
+- win-64
+zlib:
+- '1'
