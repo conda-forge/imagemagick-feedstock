@@ -20,9 +20,17 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export CPPFLAGS="${CPPFLAGS} -D_WIN32_WINNT=0x0601"
     # ssize_t is not defined in the Windows SDK; use ptrdiff_t as substitute
     export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
+
+    # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
+    export PKG_CONFIG_PATH="${LIBRARY_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
+    ls -la "${LIBRARY_PREFIX}/lib/pkgconfig" || true
+
     with_x=no
+    with_gdi32=no
 else
     with_x=yes
+    with_gdi32=yes
 fi
 
 ./configure --prefix=$PREFIX \
@@ -40,6 +48,7 @@ fi
             --with-fpx=no \
             --with-fontconfig=yes \
             --with-freetype=yes \
+            --with-gdi32=${with_gdi32} \
             --with-gslib=$with_gslib \
             --with-gvc=yes \
             --with-heic=yes \
