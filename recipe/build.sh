@@ -6,7 +6,7 @@ if [[ "${target_platform}" != "win-"* ]]; then
     cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 fi
 
-if [ "$license_family" = "agpl" ]; then
+if [ "${license_family}" = "agpl" ]; then
     with_gslib=yes
 else
     with_gslib=no
