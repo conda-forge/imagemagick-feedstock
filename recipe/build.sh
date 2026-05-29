@@ -1,4 +1,6 @@
 #!/bin/bash
+set -exo pipefail
+
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
 
@@ -6,6 +8,13 @@ if [ "$license_family" = "agpl" ]; then
     with_gslib=yes
 else
     with_gslib=no
+fi
+
+# X11 support is not available on Windows
+if [[ "${target_platform}" == "win-"* ]]; then
+    with_x=no
+else
+    with_x=yes
 fi
 
 ./configure --prefix=$PREFIX \
@@ -44,10 +53,14 @@ fi
             --with-tiff=yes \
             --with-webp=yes \
             --with-wmf=no \
-            --with-x=yes \
+            --with-x=${with_x} \
             --with-xml=yes \
             --with-zlib=yes \
             --with-glib=yes
+
+if [[ "${target_platform}" == "win-"* ]]; then
+    patch_libtool
+fi
 
 make -j$CPU_COUNT
 # FIXME:
