@@ -30,6 +30,20 @@ if [[ "${target_platform}" == "win-"* ]]; then
     echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
     ls -la "${PREFIX}/lib/pkgconfig" || true
 
+    ls -la "${PREFIX}/lib/"*expat* || true
+    grep -R "expat.lib" -n "${PREFIX}/lib/pkgconfig" "${PREFIX}/lib" || true
+
+    if [[ ! -f "${PREFIX}/lib/expat.lib" ]]; then
+        if [[ -f "${PREFIX}/lib/libexpat.lib" ]]; then
+            cp "${PREFIX}/lib/libexpat.lib" "${PREFIX}/lib/expat.lib"
+        elif [[ -f "${PREFIX}/lib/expat.dll.lib" ]]; then
+            cp "${PREFIX}/lib/expat.dll.lib" "${PREFIX}/lib/expat.lib"
+        else
+            echo "No expat import library found to satisfy expat.lib"
+            exit 1
+        fi
+    fi
+
     with_fftw=no
     with_gdi32=no
     with_x=no
