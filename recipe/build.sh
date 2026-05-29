@@ -2,7 +2,9 @@
 set -exo pipefail
 
 # Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
+if [[ "${target_platform}" != "win-"* ]]; then
+    cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
+fi
 
 if [ "$license_family" = "agpl" ]; then
     with_gslib=yes
