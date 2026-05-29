@@ -27,11 +27,12 @@ requirements:
     - pkg-config
   host:
     - bzip2
+    - dirent                 # [win]
     - fftw
     - fontconfig
     - fonts-conda-forge
     - freetype
-    - ghostscript  # [license_family=="agpl"]
+    - ghostscript            # [license_family=="agpl"]
     - giflib
     - graphviz
     - jbig
@@ -44,10 +45,10 @@ requirements:
     - libxml2-devel
     - openjpeg
     - pango
-    - xorg-libx11      # [unix]
-    - xorg-libxext     # [unix]
-    - xorg-libxrender  # [unix]
-    - xorg-libxt       # [unix]
+    - xorg-libx11            # [unix]
+    - xorg-libxext           # [unix]
+    - xorg-libxrender        # [unix]
+    - xorg-libxt             # [unix]
     - liblzma-devel
     - zlib
     - glib
@@ -80,8 +81,8 @@ requirements:
 test:
   commands:
     - magick --version
-    - magick --version | grep -q gslib && exit 1 || exit 0
-    - Magick++-config --cflags
+    - magick --version | grep -q gslib && exit 1 || exit 0  # [unix]
+    - Magick++-config --cflags                              # [unix]
 
 about:
   home: http://www.imagemagick.org/
