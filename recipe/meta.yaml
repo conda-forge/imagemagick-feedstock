@@ -81,8 +81,8 @@ requirements:
 test:
   commands:
     - magick --version
-    - magick --version | grep -q gslib && exit 1 || exit 0
-    - Magick++-config --cflags  # [unix]
+    - magick --version | grep -q gslib && exit 1 || exit 0  # [unix]
+    - Magick++-config --cflags                              # [unix]
 
     # Verify basic image operations work
     - magick -size 10x10 xc:white white.png
@@ -94,8 +94,6 @@ test:
     - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1    # [win]
     - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1    # [win]
 
-  requires:
-    - m2-grep  # [win]
 
 about:
   home: http://www.imagemagick.org/
