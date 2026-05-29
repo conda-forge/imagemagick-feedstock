@@ -91,3 +91,10 @@ make -j${CPU_COUNT}
 # tests/wandtest.c main 5321 non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3269`
 # make check
 make install
+
+if [[ "${target_platform}" == "win-"* ]]; then
+    for f in "${PREFIX}/lib/"*.dll.lib; do
+        base=$(basename "$f" .dll.lib)
+        cp "$f" "${PREFIX}/lib/${base}.lib"
+    done
+fi
