@@ -93,7 +93,7 @@ test:
     - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1    # [win]
     - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1    # [win]
 
-requires:
+  requires:
     - m2-grep  # [win]
 
 about:
