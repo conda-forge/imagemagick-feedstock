@@ -33,11 +33,9 @@ if [[ "${target_platform}" == "win-"* ]]; then
     sed -i.bak -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
     with_fftw=no
-    with_gdi32=no
     with_x=no
 else
     with_fftw=yes
-    with_gdi32=yes
     with_x=yes
 fi
 
@@ -56,8 +54,8 @@ fi
             --with-fpx=no \
             --with-fontconfig=yes \
             --with-freetype=yes \
-            --with-gdi32=${with_gdi32} \
-            --with-gslib=$with_gslib \
+            --with-gdi32=no \
+            --with-gslib=${with_gslib} \
             --with-gvc=yes \
             --with-heic=yes \
             --with-jbig=yes \
