@@ -29,8 +29,12 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
 
     # On Windows with clang, UCRT's complex.h is incompatible with fftw3's _Complex usage.
-    # Prevent configure from detecting complex.h so that fourier.c uses the double[2] fallback.
+    # Disable complex math functions to use fftw double[2] fallback macros in fourier.c
     export ac_cv_header_complex_h=no
+    export ac_cv_func_cabs=no
+    export ac_cv_func_carg=no
+    export ac_cv_func_creal=no
+    export ac_cv_func_cimag=no
 
     # MSVC/lld-link build should not link libstdc++.
     sed -i -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
@@ -87,6 +91,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
 fi
 
 make -j${CPU_COUNT}
+
 # FIXME:
 # The failure below seems to be associated with the option --with-gslib,
 # but I could not get to turn "yes." See the logs for more info.
