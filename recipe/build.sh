@@ -29,7 +29,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
 
     # MSVC/lld-link build should not link libstdc++.
-    sed -i.bak -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
+    sed -i -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
     with_x=no
 else
@@ -82,7 +82,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
     # On Windows with clang, UCRT complex.h is incompatible with fftw3's _Complex usage.
     # config.h defines MAGICKCORE_HAVE_COMPLEX_H, so we patch it out after configure.
-    sed -i 's|#define MAGICKCORE_HAVE_COMPLEX_H 1|/* #undef MAGICKCORE_HAVE_COMPLEX_H */|' config.h
+    sed -i 's|#define MAGICKCORE_HAVE_COMPLEX_H 1|/* #undef MAGICKCORE_HAVE_COMPLEX_H */|' "${SRC_DIR}/config.h"
 fi
 
 make -j${CPU_COUNT}
