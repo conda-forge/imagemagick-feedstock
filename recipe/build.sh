@@ -92,7 +92,13 @@ make -j${CPU_COUNT}
 #
 # tests/wandtest.c main 5321 non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3269`
 # make check
-make install
+
+# When performing a parallel build on Windows, a conflict error occurs stating that magick.exe cannot be found
+if [[ "${target_platform}" == "win-"* ]]; then
+    make install
+else
+    make -j${CPU_COUNT}
+fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
     for f in "${PREFIX}/lib/"*.dll.lib; do
