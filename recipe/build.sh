@@ -3,7 +3,7 @@ set -exo pipefail
 
 # Get an updated config.sub and config.guess
 if [[ "${target_platform}" != "win-"* ]]; then
-    cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
+    cp ${BUILD_PREFIX}/share/gnuconfig/config.* ./config
 fi
 
 if [ "${license_family}" = "agpl" ]; then
@@ -44,11 +44,7 @@ else
     with_x=yes
 fi
 
-${PKG_CONFIG} --exists pangocairo && echo "pangocairo found" || echo "pangocairo NOT found"
-${PKG_CONFIG} --debug pangocairo 2>&1
-exit
-
-./configure --prefix=$PREFIX \
+./configure --prefix=${PREFIX} \
             --enable-hdri=yes \
             --with-quantum-depth=16 \
             --disable-docs \
