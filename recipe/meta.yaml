@@ -55,29 +55,9 @@ requirements:
     - xorg-libxt             # [unix]
     - zlib
   run:
-    - bzip2
-    - fftw
-    - fontconfig
     - fonts-conda-forge
-    - freetype
-    - ghostscript      # [license_family=="agpl"]
-    - giflib
-    - graphviz
-    - jbig
-    - libheif
-    - liblzma-devel
-    - libpng
-    - librsvg
-    - libtiff
-    - libwebp
-    - libxml2-devel
-    - openjpeg
-    - pango
-    - xorg-libx11      # [unix]
-    - xorg-libxext     # [unix]
-    - xorg-libxrender  # [unix]
-    - xorg-libxt       # [unix]
-    - zlib
+    - ghostscript            # [license_family=="agpl"]
+    - jbig                   # [win]
 
 test:
   commands:
