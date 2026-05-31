@@ -34,24 +34,26 @@ requirements:
     - freetype
     - ghostscript            # [license_family=="agpl"]
     - giflib
+    - glib
     - graphviz
     - jbig
     - libheif
     - libjpeg-turbo
+    - libjxl
+    - liblzma-devel
     - libpng
     - librsvg
     - libtiff
     - libwebp
     - libxml2-devel
+    - libzip
     - openjpeg
     - pango
     - xorg-libx11            # [unix]
     - xorg-libxext           # [unix]
     - xorg-libxrender        # [unix]
     - xorg-libxt             # [unix]
-    - liblzma-devel
     - zlib
-    - glib
   run:
     - bzip2
     - fftw
@@ -71,7 +73,6 @@ requirements:
     - libxml2-devel
     - openjpeg
     - pango
-    - pkg-config
     - xorg-libx11      # [unix]
     - xorg-libxext     # [unix]
     - xorg-libxrender  # [unix]
