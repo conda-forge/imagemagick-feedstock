@@ -41,10 +41,6 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     with_x=no
 else
-    # Ensure configure finds conda-forge host .pc files for pango, librsvg, and fontconfig delegates
-    export PKG_CONFIG="${PREFIX}/bin/pkg-config"
-    export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:${PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
-
     with_x=yes
 fi
 
