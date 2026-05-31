@@ -22,10 +22,6 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # ssize_t is not defined in the Windows SDK; use ptrdiff_t as substitute
     export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
 
-    # On Windows with clang, the UCRT complex.h is incompatible with fftw3's _Complex usage.
-    # Undefine MAGICKCORE_HAVE_COMPLEX_H to force the double[2] fallback paths in fourier.c.
-    export CFLAGS="$CFLAGS -UMAGICKCORE_HAVE_COMPLEX_H"
-
     # Windows system libraries required by MagickCore/nt-*.c
     export LIBS="${LIBS} -ladvapi32 -luser32 -lfftw3"
 
