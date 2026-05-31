@@ -54,6 +54,7 @@ fi
             --with-fpx=no \
             --with-fontconfig=yes \
             --with-freetype=yes \
+            --with-gdi32=no \
             --with-gslib=${with_gslib} \
             --with-gvc=yes \
             --with-heic=yes \
