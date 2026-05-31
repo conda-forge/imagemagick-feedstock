@@ -22,20 +22,21 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # ssize_t is not defined in the Windows SDK; use ptrdiff_t as substitute
     export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
 
+    # On Windows with clang, fftw3's _Complex type is incompatible with UCRT's _Dcomplex.
+    # Disable fftw3's _Complex usage to fall back to double[2].
+    export CFLAGS="$CFLAGS -DFFTW_NO_Complex"
+
     # Windows system libraries required by MagickCore/nt-*.c
     export LIBS="${LIBS} -ladvapi32 -luser32 -lfftw3"
 
     # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
-    ls -la "${PREFIX}/lib/pkgconfig" || true
 
     # MSVC/lld-link build should not link libstdc++.
     sed -i.bak -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
-    with_fftw=yes
     with_x=no
 else
-    with_fftw=yes
     with_x=yes
 fi
 
@@ -49,7 +50,7 @@ fi
             --with-autotrace=no \
             --with-djvu=no \
             --with-dps=no \
-            --with-fftw=${with_fftw} \
+            --with-fftw=yes \
             --with-flif=no \
             --with-fpx=no \
             --with-fontconfig=yes \
@@ -97,7 +98,7 @@ make -j${CPU_COUNT}
 if [[ "${target_platform}" == "win-"* ]]; then
     make install
 else
-    make -j${CPU_COUNT}
+    make install -j${CPU_COUNT}
 fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
