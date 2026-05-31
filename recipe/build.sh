@@ -84,6 +84,9 @@ fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
+    # On Windows with clang, UCRT complex.h is incompatible with fftw3's _Complex usage.
+    # config.h defines MAGICKCORE_HAVE_COMPLEX_H, so we patch it out after configure.
+    sed -i 's|#define MAGICKCORE_HAVE_COMPLEX_H 1|/* #undef MAGICKCORE_HAVE_COMPLEX_H */|' config.h
 fi
 
 make -j${CPU_COUNT}
