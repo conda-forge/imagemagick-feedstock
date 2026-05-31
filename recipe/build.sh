@@ -49,7 +49,7 @@ else
 fi
 
 ${PKG_CONFIG} --exists pangocairo && echo "pangocairo found" || echo "pangocairo NOT found"
-${PKG_CONFIG} --debug pangocairo 2>&1 | head -20
+${PKG_CONFIG} --debug pangocairo 2>&1
 exit
 
 ./configure --prefix=$PREFIX \
