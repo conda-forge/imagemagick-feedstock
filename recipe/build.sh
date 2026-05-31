@@ -23,7 +23,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
 
     # Windows system libraries required by MagickCore/nt-*.c
-    export LIBS="${LIBS} -ladvapi32 -luser32"
+    export LIBS="${LIBS} -ladvapi32 -luser32 -lfftw3"
 
     # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
@@ -32,7 +32,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # MSVC/lld-link build should not link libstdc++.
     sed -i.bak -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
-    with_fftw=no
+    with_fftw=yes
     with_x=no
 else
     with_fftw=yes
