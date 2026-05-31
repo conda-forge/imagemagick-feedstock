@@ -78,6 +78,10 @@ fi
             --with-zlib=yes \
             --with-glib=yes
 
+ls "$SRC_DIR"/*.h 2>/dev/null || echo "no .h in SRC_DIR root"
+find "$SRC_DIR" -maxdepth 3 -name "*config*" -name "*.h"
+exit
+
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
     # On Windows with clang, UCRT complex.h is incompatible with fftw3's _Complex usage.
