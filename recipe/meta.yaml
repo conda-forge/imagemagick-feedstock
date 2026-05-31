@@ -37,6 +37,7 @@ requirements:
     - glib
     - graphviz
     - jbig
+    - lcms2
     - libheif
     - libjpeg-turbo
     - libjxl
