@@ -48,6 +48,10 @@ else
     with_x=yes
 fi
 
+${PKG_CONFIG} --exists pangocairo && echo "pangocairo found" || echo "pangocairo NOT found"
+${PKG_CONFIG} --debug pangocairo 2>&1 | head -20
+exit
+
 ./configure --prefix=$PREFIX \
             --enable-hdri=yes \
             --with-quantum-depth=16 \
