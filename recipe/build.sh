@@ -65,7 +65,7 @@ fi
             --with-heic=yes \
             --with-jbig=yes \
             --with-jpeg=yes \
-            --with-lcms=no \
+            --with-lcms=yes \
             --with-lqr=no \
             --with-ltdl=no \
             --with-lzma=yes \
