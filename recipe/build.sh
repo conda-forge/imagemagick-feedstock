@@ -28,6 +28,10 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # Ensure configure finds conda-forge host .pc files under Library/lib/pkgconfig.
     export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig"
 
+    # On Windows with clang, UCRT's complex.h is incompatible with fftw3's _Complex usage.
+    # Prevent configure from detecting complex.h so that fourier.c uses the double[2] fallback.
+    export ac_cv_header_complex_h=no
+
     # MSVC/lld-link build should not link libstdc++.
     sed -i -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
@@ -80,14 +84,6 @@ fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
-    # On Windows with clang, UCRT complex.h is incompatible with fftw3's _Complex usage.
-    # Header files define MAGICKCORE_HAVE_COMPLEX_H, so we patch it out after configure.
-    for f in \
-        "$SRC_DIR/config/config.h" \
-        "$SRC_DIR/MagickCore/magick-config.h" \
-        "$SRC_DIR/MagickCore/magick-baseconfig.h"; do
-        sed -i 's|#define MAGICKCORE_HAVE_COMPLEX_H 1|/* #undef MAGICKCORE_HAVE_COMPLEX_H */|' "$f" || true
-    done
 fi
 
 make -j${CPU_COUNT}
