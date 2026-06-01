@@ -70,13 +70,13 @@ fi
             --with-ltdl=no \
             --with-lzma=yes \
             --with-magick-plus-plus=yes \
-            --with-openexr=no \
+            --with-openexr=yes \
             --with-openjp2=yes \
             --with-pango=yes \
             --with-perl=no \
             --with-png=yes \
             --with-raqm=no \
-            --with-raw=no \
+            --with-raw=yes \
             --with-rsvg=yes \
             --with-tiff=yes \
             --with-webp=yes \
