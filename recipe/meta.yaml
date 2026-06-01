@@ -47,11 +47,13 @@ requirements:
     - libjxl
     - liblzma-devel
     - libpng
+    - libraw
     - librsvg
     - libtiff
     - libwebp
     - libxml2-devel
     - libzip
+    - openexr
     - openjpeg
     - pango
     - xorg-libx11            # [unix]
