@@ -69,6 +69,9 @@ requirements:
 test:
   commands:
     - magick --version                                                                          # [unix]
+    # NOTE: On Windows, gslib appears in Delegates even without ghostscript in host deps,
+    # likely due to ImageMagick's automatic Ghostscript detection via Windows registry or nt-base.c hardcoding. 
+    # Cannot reliably test gslib absence on Windows.
     - magick --version | grep -q gslib && exit 1 || exit 0                                      # [unix and license_family != "agpl"]
     - magick -size 10x10 xc:white white.png                                                     # [unix]
     - magick -size 10x10 xc:white white.jpg                                                     # [unix]
