@@ -63,7 +63,7 @@ requirements:
     - zlib
   run:
     - fonts-conda-forge
-    - ghostscript            # [license_family=="agpl"]
+    - ghostscript
     - jbig                   # [win]
 
 test:
