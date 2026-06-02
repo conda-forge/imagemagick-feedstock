@@ -69,7 +69,7 @@ requirements:
 test:
   commands:
     # Set magick command based on platform
-    {% set magick = '%PREFIX%\Library\bin\magick' %}                         # [win]
+    {% set magick = "%PREFIX%\\Library\\bin\\magick" %}                         # [win]
     {% set magick = "magick" %}                                              # [unix]
 
     - {{ magick }} --version
