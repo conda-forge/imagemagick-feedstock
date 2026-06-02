@@ -1,15 +1,27 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 bzip2:
 - '1'
 c_compiler:
-- vs2022
+- clang
+c_compiler_version:
+- '19'
 c_stdlib:
-- vs
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2022
+- clangxx
+cxx_compiler_version:
+- '19'
+expat:
+- '2'
 fftw:
 - '3'
 fontconfig:
@@ -22,6 +34,8 @@ glib:
 - '2'
 graphviz:
 - '14'
+lcms2:
+- '2'
 libheif:
 - '1.19'
 libjpeg_turbo:
@@ -30,6 +44,8 @@ liblzma_devel:
 - '5'
 libpng:
 - '1.6'
+libraw:
+- '0.22'
 librsvg:
 - '2'
 libtiff:
@@ -38,13 +54,22 @@ libwebp:
 - '1'
 libxml2_devel:
 - '2.14'
+libzip:
+- '1'
 license_family:
-- gpl
+- agpl
+macos_machine:
+- arm64-apple-darwin20.0.0
+openexr:
+- '3.4'
 openjpeg:
 - '2'
 pango:
 - '1'
 target_platform:
-- win-64
+- osx-arm64
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1'

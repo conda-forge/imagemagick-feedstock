@@ -20,6 +20,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
+expat:
+- '2'
 fftw:
 - '3'
 fontconfig:
@@ -32,6 +34,8 @@ glib:
 - '2'
 graphviz:
 - '14'
+lcms2:
+- '2'
 libheif:
 - '1.19'
 libjpeg_turbo:
@@ -40,6 +44,8 @@ liblzma_devel:
 - '5'
 libpng:
 - '1.6'
+libraw:
+- '0.22'
 librsvg:
 - '2'
 libtiff:
@@ -48,10 +54,14 @@ libwebp:
 - '1'
 libxml2_devel:
 - '2.14'
+libzip:
+- '1'
 license_family:
 - imagemagick
 macos_machine:
 - x86_64-apple-darwin13.4.0
+openexr:
+- '3.4'
 openjpeg:
 - '2'
 pango:

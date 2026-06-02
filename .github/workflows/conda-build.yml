@@ -22,7 +22,7 @@ jobs:
       max-parallel: 50
       matrix:
         include:
-          - CONFIG: linux_64_license_familygpl
+          - CONFIG: linux_64_license_familyagpl
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             os: ubuntu
@@ -40,7 +40,7 @@ jobs:
             tools_install_dir: ~/miniforge3
             build_workspace_dir: build_artifacts
             docker_run_args: 
-          - CONFIG: linux_aarch64_license_familygpl
+          - CONFIG: linux_aarch64_license_familyagpl
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             os: ubuntu
@@ -58,7 +58,7 @@ jobs:
             tools_install_dir: ~/miniforge3
             build_workspace_dir: build_artifacts
             docker_run_args: 
-          - CONFIG: linux_ppc64le_license_familygpl
+          - CONFIG: linux_ppc64le_license_familyagpl
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             os: ubuntu
