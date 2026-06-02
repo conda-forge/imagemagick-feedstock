@@ -7,6 +7,9 @@ if [[ "${target_platform}" != "win-"* ]]; then
 fi
 
 if [ "${license_family}" = "agpl" ]; then
+    # NOTE: `--with-gslib` linking fails due to missing headers in ghostscript package
+    # (ghostscript/iapi.h, ierrors.h not provided); falls back to external gs command
+    # Ref: https://github.com/conda-forge/ghostscript-feedstock/issues/40
     with_gslib=yes
 else
     with_gslib=no
