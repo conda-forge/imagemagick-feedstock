@@ -68,21 +68,20 @@ requirements:
 
 test:
   commands:
-    - magick --version
-    - magick --version | grep -q gslib && exit 1 || exit 0             # [unix and license_family != "agpl"]
-    - magick --version | findstr /C:"gslib" && exit /b 1 || exit /b 0  # [win and license_family != "agpl"]
-    - Magick++-config --cflags                                         # [unix]
+    # Set magick command based on platform
+    {% set magick = "%PREFIX%\\Library\\bin\\magick" %}                      # [win]
+    {% set magick = "magick" %}                                              # [unix]
 
-    # Verify basic image operations work
-    - magick -size 10x10 xc:white white.png
-    - magick -size 10x10 xc:white white.jpg
-    - magick -size 10x10 xc:white white.tiff
-    - magick white.png white.jpg
-
-    # Windows: verify DLLs exist
-    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1    # [win]
-    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1    # [win]
-
+    - {{ magick }} --version
+    - {{ magick }} --version | grep -q gslib && exit 1 || exit 0             # [unix and license_family != "agpl"]
+    - {{ magick }} --version | findstr /C:"gslib" && exit /b 1 || exit /b 0  # [win and license_family != "agpl"]
+    - {{ magick }} -size 10x10 xc:white white.png
+    - {{ magick }} -size 10x10 xc:white white.jpg
+    - {{ magick }} -size 10x10 xc:white white.tiff
+    - {{ magick }} white.png white.jpg
+    - Magick++-config --cflags                                               # [unix]
+    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1                     # [win]
+    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1                     # [win]
 
 about:
   home: http://www.imagemagick.org/
