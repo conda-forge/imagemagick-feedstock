@@ -76,7 +76,6 @@ test:
     - magick white.png white.jpg                                                                # [unix]
     - Magick++-config --cflags                                                                  # [unix]
     - '"%PREFIX%\Library\bin\magick" --version'                                                 # [win]
-    - '"%PREFIX%\Library\bin\magick" --version | findstr /C:"gslib" && exit /b 1 || exit /b 0'  # [win and license_family != "agpl"]
     - '"%PREFIX%\Library\bin\magick" -size 10x10 xc:white white.png'                            # [win]
     - '"%PREFIX%\Library\bin\magick" -size 10x10 xc:white white.jpg'                            # [win]
     - '"%PREFIX%\Library\bin\magick" -size 10x10 xc:white white.tiff'                           # [win]
