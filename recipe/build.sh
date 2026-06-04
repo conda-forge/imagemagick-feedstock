@@ -97,7 +97,11 @@ make -j${CPU_COUNT}
 
 # Native Windows cannot inherit additional POSIX file descriptors from MSYS2.
 # The affected tests are skipped by the Windows-only source patch.
-make -j"${CPU_COUNT}" check
+if [[ "${target_platform}" == "win-"* ]]; then
+    make check -j1
+else
+    make check -j"${CPU_COUNT}"
+fi
 
 # When performing a parallel build on Windows, a conflict error occurs stating that magick.exe cannot be found
 if [[ "${target_platform}" == "win-"* ]]; then
