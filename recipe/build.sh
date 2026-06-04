@@ -95,12 +95,9 @@ fi
 
 make -j${CPU_COUNT}
 
-# FIXME:
-# The failure below seems to be associated with the option --with-gslib,
-# but I could not get to turn "yes." See the logs for more info.
-#
-# tests/wandtest.c main 5321 non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3269`
-make check
+# Native Windows cannot inherit additional POSIX file descriptors from MSYS2.
+# The affected tests are skipped by the Windows-only source patch.
+make -j"${CPU_COUNT}" check
 
 # When performing a parallel build on Windows, a conflict error occurs stating that magick.exe cannot be found
 if [[ "${target_platform}" == "win-"* ]]; then
