@@ -100,7 +100,7 @@ make -j${CPU_COUNT}
 # but I could not get to turn "yes." See the logs for more info.
 #
 # tests/wandtest.c main 5321 non-conforming drawing primitive definition `text' @ error/draw.c/DrawImage/3269`
-# make check
+make check
 
 # When performing a parallel build on Windows, a conflict error occurs stating that magick.exe cannot be found
 if [[ "${target_platform}" == "win-"* ]]; then
