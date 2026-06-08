@@ -1,25 +1,25 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
-MACOSX_SDK_VERSION:
-- '11.0'
 bzip2:
 - '1'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '19'
+- '14'
 c_stdlib:
-- macosx_deployment_target
+- sysroot
 c_stdlib_version:
-- '11.0'
+- '2.17'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '19'
+- '14'
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+expat:
+- '2'
 fftw:
 - '3'
 fontconfig:
@@ -32,6 +32,8 @@ glib:
 - '2'
 graphviz:
 - '14'
+lcms2:
+- '2'
 libheif:
 - '1.23'
 libjpeg_turbo:
@@ -40,6 +42,8 @@ liblzma_devel:
 - '5'
 libpng:
 - '1.6'
+libraw:
+- '0.22'
 librsvg:
 - '2'
 libtiff:
@@ -48,16 +52,18 @@ libwebp:
 - '1'
 libxml2_devel:
 - '2.14'
+libzip:
+- '1'
 license_family:
-- gpl
-macos_machine:
-- x86_64-apple-darwin13.4.0
+- agpl
+openexr:
+- '3.4'
 openjpeg:
 - '2'
 pango:
 - '1'
 target_platform:
-- osx-64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

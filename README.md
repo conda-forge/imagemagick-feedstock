@@ -9,7 +9,7 @@ About imagemagick
 
 Home: http://www.imagemagick.org/
 
-Package license: 
+Package license: AGPL-3.0-only AND ImageMagick
 
 Summary: Software suite to create, edit, compose, or convert bitmap images.
 
@@ -47,10 +47,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>osx_64_license_familygpl</td>
+              <td>osx_64_license_familyagpl</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familygpl" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familyagpl" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -58,6 +58,34 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_license_familyimagemagick" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_license_familyagpl</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familyagpl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_license_familyimagemagick</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_license_familyimagemagick" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_license_familyagpl</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=win&configuration=win%20win_64_license_familyagpl" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_license_familyimagemagick</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5126&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/imagemagick-feedstock?branchName=main&jobName=win&configuration=win%20win_64_license_familyimagemagick" alt="variant">
                 </a>
               </td>
             </tr>

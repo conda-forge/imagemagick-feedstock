@@ -55,7 +55,7 @@ libxml2_devel:
 libzip:
 - '1'
 license_family:
-- imagemagick
+- agpl
 openexr:
 - '3.4'
 openjpeg:
@@ -63,7 +63,7 @@ openjpeg:
 pango:
 - '1'
 target_platform:
-- linux-ppc64le
+- linux-aarch64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

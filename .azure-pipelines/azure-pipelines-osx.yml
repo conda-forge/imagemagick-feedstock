@@ -8,8 +8,8 @@ jobs:
     vmImage: $(VMIMAGE)
   strategy:
     matrix:
-      osx_64_license_familygpl:
-        CONFIG: osx_64_license_familygpl
+      osx_64_license_familyagpl:
+        CONFIG: osx_64_license_familyagpl
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         build_workspace_dir: ~/miniforge3/conda-bld
@@ -22,17 +22,17 @@ jobs:
         build_workspace_dir: ~/miniforge3/conda-bld
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
-      osx_arm64_license_familygpl:
-        CONFIG: osx_arm64_license_familygpl
+      osx_arm64_license_familyagpl:
+        CONFIG: osx_arm64_license_familyagpl
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
       osx_arm64_license_familyimagemagick:
         CONFIG: osx_arm64_license_familyimagemagick
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
+        VMIMAGE: macOS-15-arm64
         build_workspace_dir: ~/miniforge3/conda-bld
         store_build_artifacts: false
         tools_install_dir: ~/miniforge3
