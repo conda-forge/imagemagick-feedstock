@@ -1,5 +1,5 @@
 {% set version = "7.1.2-25" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
 {% endif %}
@@ -52,6 +52,7 @@ requirements:
     - libraw
     - librsvg
     - libtiff
+    - libultrahdr
     - libwebp
     - libxml2-devel
     - libzip
