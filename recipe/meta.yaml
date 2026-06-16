@@ -52,7 +52,6 @@ requirements:
     - libraw
     - librsvg
     - libtiff
-    - libultrahdr
     - libwebp
     - libxml2-devel
     - libzip
