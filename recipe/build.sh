@@ -39,6 +39,32 @@ if [[ "${target_platform}" == "win-"* ]]; then
     export ac_cv_func_creal=no
     export ac_cv_func_cimag=no
 
+    # Fix magick-baseconfig.h for downstream MSVC (cl.exe) consumers.
+    #
+    # The conda-forge imagemagick package is built with clang/autotools.
+    # clang on Windows supports both __restrict and __restrict__, so
+    # AC_C_RESTRICT selects __restrict__ (GCC/Clang form).  MSVC only
+    # supports __restrict (single underscore), causing C2086/C2371 errors
+    # when libvips or other downstream packages include MagickCore headers.
+    #
+    # Similarly, clang on Windows provides ssize_t via sys/types.h, so
+    # AC_TYPE_SSIZE_T finds it and leaves the ssize_t #undef in place.
+    # MSVC's SDK does not provide ssize_t, causing C2065 (undeclared
+    # identifier) errors in downstream MSVC builds.
+    #
+    # We first try to override the autoconf cache variables so that
+    # configure generates the correct magick-baseconfig.h directly.
+    # The sed commands below act as a guaranteed fallback in case the
+    # cache overrides have no effect (e.g., autoconf version differences).
+    
+    # AC_C_RESTRICT: tell configure that __restrict is the restrict keyword,
+    # not __restrict__ (which is the clang default on Windows).
+    export ac_cv_c_restrict=__restrict
+    
+    # AC_TYPE_SSIZE_T: tell configure that ssize_t does not exist on this
+    # platform, so it emits a typedef in magick-baseconfig.h.
+    export ac_cv_type_ssize_t=no
+
     # MSVC/lld-link build should not link libstdc++.
     sed -i -E 's/(^| )-lstdc\+\+($| )/ /g' "${PREFIX}"/lib/pkgconfig/*.pc
 
@@ -111,6 +137,19 @@ else
 fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
+    BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
+    
+    # Fallback: if ac_cv_c_restrict had no effect and __restrict__ was written,
+    # replace it with __restrict for MSVC compatibility.
+    sed -i 's|#define _magickcore_restrict __restrict__|#define _magickcore_restrict __restrict|' "${BASECONFIG}"
+    
+    # Fallback: if ac_cv_type_ssize_t had no effect and ssize_t was left
+    # undefined (/* #undef ssize_t */), define it as ptrdiff_t.
+    # ptrdiff_t is 64-bit on x86_64 and matches the signedness and size
+    # semantics of ssize_t; using 'int' (32-bit) would risk overflow for
+    # images larger than 2GB.
+    sed -i 's|/\* #undef ssize_t \*/|#define ssize_t ptrdiff_t|' "${BASECONFIG}"
+
     for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
         cp "$f" "${PREFIX}/lib/${base}.lib"
