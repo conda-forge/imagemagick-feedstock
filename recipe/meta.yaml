@@ -81,9 +81,15 @@ test:
     - magick -size 10x10 xc:white white.jpg
     - magick -size 10x10 xc:white white.tiff
     - magick white.png white.jpg
-    - Magick++-config --cflags                            # [unix]
-    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1  # [win]
-    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1  # [win]
+    - Magick++-config --cflags                                                                                       # [unix]
+    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1                                                             # [win]
+    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1                                                             # [win]
+    - cl.exe /I %LIBRARY_INC%\ImageMagick-7 /I %LIBRARY_INC% /nologo /WX /Fe test_msvc_compat.exe test_msvc_compat.c  # [win]
+    - test_msvc_compat.exe                                                                                           # [win]
+  files:
+    - test_msvc_compat.c  # [win]
+  requires:
+    - {{ compiler('c') }}  # [win]
 
 about:
   home: http://www.imagemagick.org/
