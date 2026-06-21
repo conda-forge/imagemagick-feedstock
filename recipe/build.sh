@@ -125,6 +125,20 @@ make -j${CPU_COUNT}
 if [[ "${target_platform}" == "win-"* ]]; then
     make check -j1
     make install
+
+    for f in \
+      "${PREFIX}/include/ImageMagick-7/MagickCore/magick-config.h" \
+      "${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
+    do
+      if [ -f "${f}" ]; then
+        sed -i.bak -E \
+          '/^[[:space:]]*#warning[[:space:]]+/{
+            s/^[[:space:]]*#warning[[:space:]]+/#pragma message(/;
+            s/$/)/;
+          }' "${f}"
+      fi
+    done
+
     for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
         cp "$f" "${PREFIX}/lib/${base}.lib"
