@@ -84,7 +84,7 @@ test:
     - Magick++-config --cflags                                                                                       # [unix]
     - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1                                                             # [win]
     - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1                                                             # [win]
-    - cl.exe /I %LIBRARY_INC%\ImageMagick-7 /I %LIBRARY_INC% /nologo /WX /Fe test_msvc_compat.exe test_msvc_compat.c  # [win]
+    - cl.exe /I %LIBRARY_INC%\ImageMagick-7 /I %LIBRARY_INC% /nologo /WX /Fe:test_msvc_compat.exe test_msvc_compat.c  # [win]
     - test_msvc_compat.exe                                                                                           # [win]
   files:
     - test_msvc_compat.c  # [win]
