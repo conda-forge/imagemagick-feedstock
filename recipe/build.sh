@@ -121,37 +121,15 @@ fi
 
 make -j${CPU_COUNT}
 
-# Native Windows cannot inherit additional POSIX file descriptors from MSYS2.
-# The affected tests are skipped by the Windows-only source patch.
+# When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
 if [[ "${target_platform}" == "win-"* ]]; then
     make check -j1
-else
-    make check -j"${CPU_COUNT}"
-fi
-
-# When performing a parallel build on Windows, a conflict error occurs stating that magick.exe cannot be found
-if [[ "${target_platform}" == "win-"* ]]; then
     make install
-else
-    make install -j${CPU_COUNT}
-fi
-
-if [[ "${target_platform}" == "win-"* ]]; then
-    BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
-    
-    # Fallback: if ac_cv_c_restrict had no effect and __restrict__ was written,
-    # replace it with __restrict for MSVC compatibility.
-    sed -i 's|#define _magickcore_restrict __restrict__|#define _magickcore_restrict __restrict|' "${BASECONFIG}"
-    
-    # Fallback: if ac_cv_type_ssize_t had no effect and ssize_t was left
-    # undefined (/* #undef ssize_t */), define it as ptrdiff_t.
-    # ptrdiff_t is 64-bit on x86_64 and matches the signedness and size
-    # semantics of ssize_t; using 'int' (32-bit) would risk overflow for
-    # images larger than 2GB.
-    sed -i 's|/\* #undef ssize_t \*/|#define ssize_t ptrdiff_t|' "${BASECONFIG}"
-
     for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
         cp "$f" "${PREFIX}/lib/${base}.lib"
     done
+else
+    make check -j"${CPU_COUNT}"
+    make install -j${CPU_COUNT}
 fi
