@@ -117,33 +117,18 @@ fi
 
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
-fi
-
-make -j${CPU_COUNT}
-
-# When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
-if [[ "${target_platform}" == "win-"* ]]; then
+    make -j${CPU_COUNT}
     make check -j1
-    make install
 
-    for f in \
-      "${PREFIX}/include/ImageMagick-7/MagickCore/magick-config.h" \
-      "${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
-    do
-      if [ -f "${f}" ]; then
-        sed -i.bak -E \
-          '/^[[:space:]]*#warning[[:space:]]+/{
-            s/^[[:space:]]*#warning[[:space:]]+/#pragma message(/;
-            s/$/)/;
-          }' "${f}"
-      fi
-    done
+    # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
+    make install
 
     for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
         cp "$f" "${PREFIX}/lib/${base}.lib"
     done
 else
+    make -j${CPU_COUNT}
     make check -j"${CPU_COUNT}"
     make install -j${CPU_COUNT}
 fi
