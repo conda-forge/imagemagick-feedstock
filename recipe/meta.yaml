@@ -12,6 +12,7 @@ source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
   sha256: ff33d227d2e1744327280e956ec9f7abaebbd8f48277d16cdad906e05e4794b6
   patches:
+    - remove-warning-compat-block.patch          # [win]
     - skip-additional-fd-tests-on-windows.patch  # [win]
 
 build:
