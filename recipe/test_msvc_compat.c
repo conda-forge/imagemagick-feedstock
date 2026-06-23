@@ -10,12 +10,17 @@
  *     must be __restrict (single underscore).
  *   - C2065: ssize_t undeclared when not typedef'd in magick-baseconfig.h.
  */
+
+// Required by MagickCore/magick-config.h
+#define MAGICKCORE_QUANTUM_DEPTH 16
+#define MAGICKCORE_HDRI_ENABLE 1
+
 #include <MagickCore/MagickCore.h>
 
-/* Verify ssize_t is usable */
+// Verify ssize_t is usable
 static ssize_t test_ssize = -1;
 
-/* Verify _magickcore_restrict is usable as a qualifier */
+// Verify _magickcore_restrict is usable as a qualifier
 static int test_restrict(const int * _magickcore_restrict p) {
     return *p;
 }
