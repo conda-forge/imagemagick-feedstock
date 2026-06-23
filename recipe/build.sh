@@ -125,7 +125,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
     make install
 
-    BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
+    BASECONFIG="${LIBRARY_INC}/ImageMagick-7/MagickCore/magick-baseconfig.h"
     
     # 1) remove any macro form first
     sed -i 's|^#define ssize_t ptrdiff_t$|/* removed ssize_t macro */|g' "${BASECONFIG}"
@@ -136,10 +136,10 @@ if [[ "${target_platform}" == "win-"* ]]; then
     
     # 3) ensure restrict is MSVC compatible
     sed -i 's|#define _magickcore_restrict __restrict__|#define _magickcore_restrict __restrict|g' "${BASECONFIG}"
-
-    for f in "${PREFIX}/lib/"*.dll.lib; do
+    
+    for f in "${LIBRARY_LIB}/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
-        cp "$f" "${PREFIX}/lib/${base}.lib"
+        cp "$f" "${LIBRARY_LIB}/${base}.lib"
     done
 else
     make -j${CPU_COUNT}
