@@ -125,17 +125,21 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
     make install
 
+    # Fix magick-baseconfig.h for MSVC (cl.exe) consumers.
+    #
+    # The package is built with clang/autotools, which detects __attribute__
+    # support and sets MAGICKCORE_HAVE___ATTRIBUTE__=1 in magick-baseconfig.h.
+    # MSVC does not support __attribute__, so method-attribute.h would expand
+    # magick_attribute to __attribute__ instead of the no-op MSVC branch.
+    # Undefine MAGICKCORE_HAVE___ATTRIBUTE__ under _MSC_VER so that
+    # method-attribute.h falls through to the MAGICKCORE_WINDOWS_SUPPORT branch.
+    #
+    # Also, clang on Windows provides ssize_t via sys/types.h, so AC_TYPE_SSIZE_T
+    # finds it and emits no typedef in magick-baseconfig.h. MSVC's SDK does not
+    # provide ssize_t, so we inject a typedef ptrdiff_t ssize_t guarded by _MSC_VER.
     BASECONFIG="${LIBRARY_INC}/ImageMagick-7/MagickCore/magick-baseconfig.h"
-    
-    # 1) remove any macro form first
-    sed -i 's|^#define ssize_t ptrdiff_t$|/* removed ssize_t macro */|g' "${BASECONFIG}"
-    
-    # 2) ensure typedef exists exactly once
-    grep -q '^typedef ptrdiff_t ssize_t;$' "${BASECONFIG}" || \
-      sed -i 's|/\* #undef ssize_t \*/|typedef ptrdiff_t ssize_t;|' "${BASECONFIG}"
-    
-    # 3) ensure restrict is MSVC compatible
-    sed -i 's|#define _magickcore_restrict __restrict__|#define _magickcore_restrict __restrict|g' "${BASECONFIG}"
+    sed -i 's|#define MAGICKCORE_HAVE___ATTRIBUTE__ 1|#define MAGICKCORE_HAVE___ATTRIBUTE__ 1\n#ifdef _MSC_VER\n#  undef MAGICKCORE_HAVE___ATTRIBUTE__\n#endif|' "${BASECONFIG}"
+    sed -i 's|#endif /\* MAGICKCORE_MAGICK_BASECONFIG_H \*/|#ifdef _MSC_VER\n#  include <stddef.h>\n#  ifndef ssize_t\n    typedef ptrdiff_t ssize_t;\n#  endif\n#endif\n#endif /* MAGICKCORE_MAGICK_BASECONFIG_H */|' "${BASECONFIG}"
     
     for f in "${LIBRARY_LIB}/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
