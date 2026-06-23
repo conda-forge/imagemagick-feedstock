@@ -17,6 +17,11 @@ fi
 
 # X11 support is not available on Windows
 if [[ "${target_platform}" == "win-"* ]]; then
+    # Provide ssize_t during the Windows clang/autotools build phase.
+    # This is needed to compile ImageMagick sources that use ssize_t on Windows.
+    # We normalize the installed/public header to a typedef later for MSVC consumers.
+    export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
+
     # `_WIN32_WINNT` is not defined in autotools_clang_conda environment,
     # causing `MAGICKCORE_POSIX_SUPPORT` to be set instead of `MAGICKCORE_WINDOWS_SUPPORT`.
     # This leads to `dirent.h/sys/wait.h` being included, which don't exist on Windows.
@@ -115,6 +120,12 @@ fi
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
     make -j${CPU_COUNT}
+
+    # Ensure ssize_t is a real type in generated baseconfig for Windows builds.
+    # Use typedef instead of macro to avoid function-type parsing issues.
+    sed -i 's|/\* #undef ssize_t \*/|typedef ptrdiff_t ssize_t;|' MagickCore/magick-baseconfig.h
+    sed -i 's|#define ssize_t ptrdiff_t|typedef ptrdiff_t ssize_t;|' MagickCore/magick-baseconfig.h
+
     make check -j1
 
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
