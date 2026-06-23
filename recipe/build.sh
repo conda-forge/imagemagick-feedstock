@@ -21,9 +21,6 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # causing `MAGICKCORE_POSIX_SUPPORT` to be set instead of `MAGICKCORE_WINDOWS_SUPPORT`.
     # This leads to `dirent.h/sys/wait.h` being included, which don't exist on Windows.
     export CPPFLAGS="${CPPFLAGS} -D_WIN32_WINNT=0x0601"
-    
-    # ssize_t is not defined in the Windows SDK; use ptrdiff_t as substitute
-    export CPPFLAGS="${CPPFLAGS} -Dssize_t=ptrdiff_t"
 
     # Windows system libraries required by MagickCore/nt-*.c
     export LIBS="${LIBS} -ladvapi32 -luser32"
