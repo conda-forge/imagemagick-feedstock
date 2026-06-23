@@ -120,16 +120,22 @@ fi
 if [[ "${target_platform}" == "win-"* ]]; then
     patch_libtool
     make -j${CPU_COUNT}
-
-    # Ensure ssize_t is a real type in generated baseconfig for Windows builds.
-    # Use typedef instead of macro to avoid function-type parsing issues.
-    sed -i 's|/\* #undef ssize_t \*/|typedef ptrdiff_t ssize_t;|' MagickCore/magick-baseconfig.h
-    sed -i 's|#define ssize_t ptrdiff_t|typedef ptrdiff_t ssize_t;|' MagickCore/magick-baseconfig.h
-
     make check -j1
 
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
     make install
+
+    BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
+    
+    # 1) remove any macro form first
+    sed -i 's|^#define ssize_t ptrdiff_t$|/* removed ssize_t macro */|g' "${BASECONFIG}"
+    
+    # 2) ensure typedef exists exactly once
+    grep -q '^typedef ptrdiff_t ssize_t;$' "${BASECONFIG}" || \
+      sed -i 's|/\* #undef ssize_t \*/|typedef ptrdiff_t ssize_t;|' "${BASECONFIG}"
+    
+    # 3) ensure restrict is MSVC compatible
+    sed -i 's|#define _magickcore_restrict __restrict__|#define _magickcore_restrict __restrict|g' "${BASECONFIG}"
 
     for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
