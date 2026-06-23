@@ -124,6 +124,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
     make install
+    grep -n 'ssize_t' "${PREFIX}/Library/include/ImageMagick-7/MagickCore/magick-baseconfig.h" || true
 
     # Fix magick-baseconfig.h for MSVC (cl.exe) consumers.
     #
