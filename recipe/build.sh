@@ -43,27 +43,27 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     # Fix magick-baseconfig.h for downstream MSVC (cl.exe) consumers.
     #
-    # The conda-forge imagemagick package is built with clang/autotools.
-    # clang on Windows supports both __restrict and __restrict__, so
-    # AC_C_RESTRICT selects __restrict__ (GCC/Clang form).  MSVC only
-    # supports __restrict (single underscore), causing C2086/C2371 errors
+    # This conda-forge imagemagick package is built with clang/autotools.
+    # clang on Windows supports both `__restrict` and `__restrict__`, so
+    # `AC_C_RESTRICT` selects `__restrict__` (GCC/Clang form).  MSVC only
+    # supports `__restrict` (single underscore), causing C2086/C2371 errors
     # when libvips or other downstream packages include MagickCore headers.
     #
-    # Similarly, clang on Windows provides ssize_t via sys/types.h, so
-    # AC_TYPE_SSIZE_T finds it and leaves the ssize_t #undef in place.
-    # MSVC's SDK does not provide ssize_t, causing C2065 (undeclared
+    # Similarly, clang on Windows provides `ssize_t` via sys/types.h, so
+    # `AC_TYPE_SSIZE_T` finds it and leaves the `ssize_t` `#undef` in place.
+    # MSVC's SDK does not provide `ssize_t`, causing C2065 (undeclared
     # identifier) errors in downstream MSVC builds.
     #
     # We first try to override the autoconf cache variables so that
     # configure generates the correct magick-baseconfig.h directly.
-    # The sed commands below act as a guaranteed fallback in case the
+    # The perl commands below act as a guaranteed fallback in case the
     # cache overrides have no effect (e.g., autoconf version differences).
     
-    # AC_C_RESTRICT: tell configure that __restrict is the restrict keyword,
+    # `AC_C_RESTRICT`: tell configure that __restrict is the restrict keyword,
     # not __restrict__ (which is the clang default on Windows).
     export ac_cv_c_restrict=__restrict
     
-    # AC_TYPE_SSIZE_T: tell configure that ssize_t does not exist on this
+    # `AC_TYPE_SSIZE_T`: tell configure that ssize_t does not exist on this
     # platform, so it emits a typedef in magick-baseconfig.h.
     export ac_cv_type_ssize_t=no
 
@@ -127,24 +127,26 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     # Fix magick-baseconfig.h for MSVC (cl.exe) consumers.
     #
-    # The package is built with clang/autotools, which detects __attribute__
-    # support and sets MAGICKCORE_HAVE___ATTRIBUTE__=1 in magick-baseconfig.h.
-    # MSVC does not support __attribute__, so method-attribute.h would expand
-    # magick_attribute to __attribute__ instead of the no-op MSVC branch.
-    # Undefine MAGICKCORE_HAVE___ATTRIBUTE__ under _MSC_VER so that
+    # The package is built with clang/autotools, which detects `__attribute__`
+    # support and sets `MAGICKCORE_HAVE___ATTRIBUTE__=1` in magick-baseconfig.h.
+    # MSVC does not support `__attribute__`, so method-attribute.h would expand
+    # `magick_attribute` to `__attribute__` instead of the no-op MSVC branch.
+    # We undefine `MAGICKCORE_HAVE___ATTRIBUTE__` under `_MSC_VER` so that
     # method-attribute.h falls through to the MAGICKCORE_WINDOWS_SUPPORT branch.
     #
-    # Also, clang on Windows provides ssize_t via sys/types.h, so AC_TYPE_SSIZE_T
-    # finds it and emits no typedef in magick-baseconfig.h. MSVC's SDK does not
-    # provide ssize_t, so we inject a typedef ptrdiff_t ssize_t guarded by _MSC_VER.
+    # Also, clang on Windows provides ssize_t via sys/types.h, so `AC_TYPE_SSIZE_T`
+    # finds it and emits no typedef in magick-baseconfig.h. The MSVC SDK does not
+    # provide ssize_t (regardless of whether cl.exe or clang-cl is used), so we
+    # inject a typedef guarded by `_MSC_VER`, which is defined for both cl.exe
+    # and clang-cl on Windows.
     BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
 
-    # Add MSVC ssize_t typedef after the _magickcore_ssize_t block
+    # Add `ssize_t` typedef guarded for cl.exe only (not clang-cl)
     perl -i -0777 -pe \
       's|(#ifndef _magickcore_ssize_t\n#define _magickcore_ssize_t int)|$1\n#ifdef _MSC_VER\n#  include <stddef.h>\n#  ifndef ssize_t\n    typedef ptrdiff_t ssize_t;\n#  endif\n#endif|' \
       "${BASECONFIG}"
     
-    # Add MSVC __attribute__ guard
+    # Add `__attribute__` guard for cl.exe only (not clang-cl)
     perl -i -0777 -pe \
       's|(#define MAGICKCORE_HAVE___ATTRIBUTE__ 1)|$1\n#ifdef _MSC_VER\n#  undef MAGICKCORE_HAVE___ATTRIBUTE__\n#endif|' \
       "${BASECONFIG}"
