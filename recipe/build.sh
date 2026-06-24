@@ -124,7 +124,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
 
     # When performing a parallel installation on Windows, a conflict error occurs stating that magick.exe cannot be found
     make install
-    grep -n 'ssize_t' "${PREFIX}/Library/include/ImageMagick-7/MagickCore/magick-baseconfig.h" || true
+    grep -n 'ssize_t' "${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h" || true
 
     # Fix magick-baseconfig.h for MSVC (cl.exe) consumers.
     #
@@ -138,13 +138,13 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # Also, clang on Windows provides ssize_t via sys/types.h, so AC_TYPE_SSIZE_T
     # finds it and emits no typedef in magick-baseconfig.h. MSVC's SDK does not
     # provide ssize_t, so we inject a typedef ptrdiff_t ssize_t guarded by _MSC_VER.
-    BASECONFIG="${LIBRARY_INC}/ImageMagick-7/MagickCore/magick-baseconfig.h"
+    BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
     sed -i 's|#define MAGICKCORE_HAVE___ATTRIBUTE__ 1|#define MAGICKCORE_HAVE___ATTRIBUTE__ 1\n#ifdef _MSC_VER\n#  undef MAGICKCORE_HAVE___ATTRIBUTE__\n#endif|' "${BASECONFIG}"
     sed -i 's|#endif /\* MAGICKCORE_MAGICK_BASECONFIG_H \*/|#ifdef _MSC_VER\n#  include <stddef.h>\n#  ifndef ssize_t\n    typedef ptrdiff_t ssize_t;\n#  endif\n#endif\n#endif /* MAGICKCORE_MAGICK_BASECONFIG_H */|' "${BASECONFIG}"
     
-    for f in "${LIBRARY_LIB}/"*.dll.lib; do
+    for f in "${PREFIX}/lib/"*.dll.lib; do
         base=$(basename "$f" .dll.lib)
-        cp "$f" "${LIBRARY_LIB}/${base}.lib"
+        cp "$f" "${PREFIX}/lib/${base}.lib"
     done
 else
     make -j${CPU_COUNT}
