@@ -139,6 +139,7 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # finds it and emits no typedef in magick-baseconfig.h. MSVC's SDK does not
     # provide ssize_t, so we inject a typedef ptrdiff_t ssize_t guarded by _MSC_VER.
     BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
+
     # Add MSVC ssize_t typedef after the _magickcore_ssize_t block
     perl -i -0777 -pe \
       's|(#ifndef _magickcore_ssize_t\n#define _magickcore_ssize_t int)|$1\n#ifdef _MSC_VER\n#  include <stddef.h>\n#  ifndef ssize_t\n    typedef ptrdiff_t ssize_t;\n#  endif\n#endif|' \
