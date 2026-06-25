@@ -141,12 +141,12 @@ if [[ "${target_platform}" == "win-"* ]]; then
     # and clang-cl on Windows.
     BASECONFIG="${PREFIX}/include/ImageMagick-7/MagickCore/magick-baseconfig.h"
 
-    # Add `ssize_t` typedef guarded for cl.exe only (not clang-cl)
+    # Add `ssize_t` typedef for all compilers targeting the MSVC ABI (`_MSC_VER`)
     perl -i -0777 -pe \
       's|(#ifndef _magickcore_ssize_t\n#define _magickcore_ssize_t int)|$1\n#ifdef _MSC_VER\n#  include <stddef.h>\n#  ifndef ssize_t\n    typedef ptrdiff_t ssize_t;\n#  endif\n#endif|' \
       "${BASECONFIG}"
-    
-    # Add `__attribute__` guard for cl.exe only (not clang-cl)
+
+    # Add `__attribute__` guard for all compilers targeting the MSVC ABI (`_MSC_VER`)
     perl -i -0777 -pe \
       's|(#define MAGICKCORE_HAVE___ATTRIBUTE__ 1)|$1\n#ifdef _MSC_VER\n#  undef MAGICKCORE_HAVE___ATTRIBUTE__\n#endif|' \
       "${BASECONFIG}"
