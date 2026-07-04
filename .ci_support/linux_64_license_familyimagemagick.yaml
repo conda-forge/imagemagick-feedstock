@@ -38,6 +38,8 @@ libheif:
 - '1.23'
 libjpeg_turbo:
 - '3'
+libjxl:
+- '0.12'
 liblzma_devel:
 - '5'
 libpng:
