@@ -19,9 +19,10 @@ build:
   number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   ignore_run_exports_from:
-    # expat is only needed for pkg-config dependency resolution of fontconfig.
-    # ImageMagick does not use expat directly at runtime.
+    # expat and freetype are only needed for pkg-config dependency resolution of fontconfig.
+    # ImageMagick does not use them directly at runtime.
     - expat
+    - freetype
 
 requirements:
   build:
