@@ -1,5 +1,5 @@
 {% set version = "7.1.2-27" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
 {% endif %}
@@ -12,15 +12,17 @@ source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
   sha256: 485dad5226fda2417ea65f3eb6e3f63e7d5dfacacdf6f57f9c39b6ef1e3cb667
   patches:
+    - remove-warning-compat-block.patch          # [win]
     - skip-additional-fd-tests-on-windows.patch  # [win]
 
 build:
   number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
   ignore_run_exports_from:
-    # expat is only needed for pkg-config dependency resolution of fontconfig.
-    # ImageMagick does not use expat directly at runtime.
+    # expat and freetype are only needed for pkg-config dependency resolution of fontconfig.
+    # ImageMagick does not use them directly at runtime.
     - expat
+    - freetype
 
 requirements:
   build:
@@ -80,9 +82,15 @@ test:
     - magick -size 10x10 xc:white white.jpg
     - magick -size 10x10 xc:white white.tiff
     - magick white.png white.jpg
-    - Magick++-config --cflags                            # [unix]
-    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1  # [win]
-    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1  # [win]
+    - Magick++-config --cflags                                                         # [unix]
+    - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1                               # [win]
+    - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1                               # [win]
+    - cl.exe /I %LIBRARY_INC% /I %LIBRARY_INC%\ImageMagick-7 /nologo /WX /Fe:test_msvc_compat.exe test_msvc_compat.c  # [win]
+    - test_msvc_compat.exe                                                             # [win]
+  files:
+    - test_msvc_compat.c  # [win]
+  requires:
+    - {{ compiler('c') }}  # [win]
 
 about:
   home: http://www.imagemagick.org/
