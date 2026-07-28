@@ -1,4 +1,4 @@
-{% set version = "7.1.2-27" %}
+{% set version = "7.1.2-29" %}
 {% set build = 0 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: 485dad5226fda2417ea65f3eb6e3f63e7d5dfacacdf6f57f9c39b6ef1e3cb667
+  sha256: b05924ad73c6932ba62c9b32f338f0619b90b767162c8b767f3566556187a284
   patches:
     - skip-additional-fd-tests-on-windows.patch  # [win]
 
