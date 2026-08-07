@@ -1,0 +1,114 @@
+schema_version: 1
+
+context:
+  version: "7.1.2-27"
+  build: ${{ 101 if license_family == "agpl" else 1 }}
+
+package:
+  name: imagemagick
+  version: ${{ version | replace("-", "_") }}
+
+source:
+  url: https://github.com/ImageMagick/ImageMagick/archive/${{ version }}.tar.gz
+  sha256: 485dad5226fda2417ea65f3eb6e3f63e7d5dfacacdf6f57f9c39b6ef1e3cb667
+  patches:
+    - if: win
+      then: skip-additional-fd-tests-on-windows.patch
+
+build:
+  number: ${{ build }}
+  string: ${{ license_family }}_h${{ hash }}_${{ build_number }}
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
+    - if: win
+      then: autotools_clang_conda
+    - if: unix
+      then:
+        - gnuconfig
+        - make
+    - pkg-config
+  host:
+    - bzip2
+    - expat
+    - fftw
+    - fontconfig
+    - fonts-conda-forge
+    - freetype
+    - if: license_family == "agpl"
+      then: ghostscript
+    - giflib
+    - glib
+    - graphviz
+    - jbig
+    - lcms2
+    - libheif
+    - libjpeg-turbo
+    - libjxl
+    - liblzma-devel
+    - libpng
+    - libraw
+    - librsvg
+    - libtiff
+    - libwebp
+    - libxml2-devel
+    - libzip
+    - openexr
+    - openjpeg
+    - pango
+    - if: unix
+      then:
+        - xorg-libx11
+        - xorg-libxext
+        - xorg-libxrender
+        - xorg-libxt
+    - zlib
+  run:
+    - fonts-conda-forge
+    - if: license_family == "agpl"
+      then: ghostscript
+    - if: win
+      then: jbig
+  # The permissive variants call ghostscript only as an external delegate
+  # (never linked); opt in explicitly via imagemagick[extras=[ghostscript]].
+  extras:
+    ghostscript:
+      - ghostscript
+  ignore_run_exports:
+    from_package:
+      # expat is only needed for pkg-config dependency resolution of fontconfig.
+      # ImageMagick does not use expat directly at runtime.
+      - expat
+
+tests:
+  - script:
+      - magick --version
+      # NOTE: On Windows, gslib appears in Delegates even without ghostscript in host deps,
+      # likely due to ImageMagick's automatic Ghostscript detection via Windows registry or nt-base.c hardcoding.
+      # Cannot reliably test gslib absence on Windows.
+      - if: unix and license_family != "agpl"
+        then: magick --version | grep -q gslib && exit 1 || exit 0
+      - magick -size 10x10 xc:white white.png
+      - magick -size 10x10 xc:white white.jpg
+      - magick -size 10x10 xc:white white.tiff
+      - magick white.png white.jpg
+      - if: unix
+        then: Magick++-config --cflags
+      - if: win
+        then:
+          - if not exist %LIBRARY_BIN%\MagickCore-*.dll exit 1
+          - if not exist %LIBRARY_BIN%\MagickWand-*.dll exit 1
+
+about:
+  homepage: http://www.imagemagick.org/
+  license_file: LICENSE
+  license: ${{ "AGPL-3.0-only AND ImageMagick" if license_family == "agpl" else "ImageMagick" }}
+  summary: Software suite to create, edit, compose, or convert bitmap images.
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
+    - halldc
