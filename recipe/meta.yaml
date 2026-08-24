@@ -1,6 +1,6 @@
 {% set version = "7.1.2-30" %}
-{% set build = 0 %}
-{% if license_family == "agpl" %}
+{% set build = 1 %}
+{% if license_family == "imagemagick" %}
     {% set build = build + 100 %}
 {% endif %}
 
@@ -15,10 +15,14 @@ source:
     - remove-warning-compat-block.patch          # [win]
     - skip-additional-fd-tests-on-windows.patch  # [win]
     - skip-validate-formats-map-memory-on-windows.patch  # [win]
+    # validate-convert is flaky on Windows and can exit before emitting a TAP result.
+    - skip-validate-convert-on-windows.patch  # [win]
 
 build:
   number: {{ build }}
   string: {{ license_family }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}
+  run_exports:
+      - {{ pin_subpackage('imagemagick', max_pin='x.x.x') }}
   ignore_run_exports_from:
     # expat and freetype are only needed for pkg-config dependency resolution of fontconfig.
     # ImageMagick does not use them directly at runtime.
