@@ -63,7 +63,7 @@ license_family:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openexr:
-- '3.4'
+- '3.5'
 openjpeg:
 - '2'
 pango:
