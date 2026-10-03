@@ -59,7 +59,7 @@ libzip:
 license_family:
 - imagemagick
 openexr:
-- '3.4'
+- '3.5'
 openjpeg:
 - '2'
 pango:
