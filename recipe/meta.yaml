@@ -1,5 +1,5 @@
-{% set version = "7.1.2-31" %}
-{% set build = 2 %}
+{% set version = "7.1.2-33" %}
+{% set build = 0 %}
 {% if license_family == "agpl" %}
     {% set build = build + 100 %}
 {% endif %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/ImageMagick/ImageMagick/archive/{{ version }}.tar.gz
-  sha256: 34d9cc3acddc3e3c429d23af60eda5ceaac477a8b296ddb9469f773f44a80a5f
+  sha256: c768ff077cccff1b682aa56653b54247b268752427ca998992b24cc7c597d9e7
   patches:
     - remove-warning-compat-block.patch          # [win]
     - skip-additional-fd-tests-on-windows.patch  # [win]
