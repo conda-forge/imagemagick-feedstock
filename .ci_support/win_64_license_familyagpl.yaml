@@ -19,7 +19,7 @@ fontconfig:
 freetype:
 - '2'
 giflib:
-- '5.2'
+- '6'
 glib:
 - '2'
 graphviz:
@@ -31,7 +31,7 @@ libheif:
 libjpeg_turbo:
 - '3'
 libjxl:
-- '0.12'
+- '0.13'
 liblzma_devel:
 - '5'
 libpng:
@@ -51,7 +51,7 @@ libzip:
 license_family:
 - agpl
 openexr:
-- '3.4'
+- '3.5'
 openjpeg:
 - '2'
 pango:
